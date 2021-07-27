@@ -29,5 +29,7 @@
     <None Include="Test1.vs" />
     <None Include="Test2.vs" />
     <None Include="Test2.frag" />
+    <None Include="Test3.vs" />
+    <None Include="Test3.frag" />
   </ItemGroup>
 </Project>

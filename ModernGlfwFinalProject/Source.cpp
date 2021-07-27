@@ -660,7 +660,7 @@ const GLchar* fshader = "#version 330 core \n"
 
 void main()
 {
-	GLint wid = 800; //*window variable
+	GLint wid = 1200; //*window variable
 	GLint height = 800; //*window variable
 	GLFWwindow* window; //pointer var as window that will hold address only 
 	glfwInit();
@@ -742,8 +742,9 @@ void main()
 	GLfloat vertices[] =
 	{
 		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.0f, 0.5f, 0.0f
+		0.0f, -0.5f, 0.0f,
+		0.0f, 0.5f, 0.0f,
+		-0.5f, 0.5f, 0.0f
 	};
 
 	GLuint VBO, VAO;//vertex buffer obj//vert array obj
@@ -773,7 +774,7 @@ void main()
 		glBindVertexArray(VAO);				//7.add parameter as VAO then it will come to know with buffer we are drawing
 
 		//drawing
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_QUADS, 0, 4);
 		//glBindVertexArray();
 
 		glfwSwapBuffers(window);//to swap the new color for window

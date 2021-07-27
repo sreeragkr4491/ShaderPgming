@@ -19,4 +19,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Test1.frag" />
+    <None Include="Test1.vs" />
+    <None Include="Test2.vs" />
+    <None Include="Test2.frag" />
+  </ItemGroup>
 </Project>

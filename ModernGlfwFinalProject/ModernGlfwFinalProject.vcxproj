@@ -154,6 +154,7 @@
     <None Include="Test2.vs" />
     <None Include="Test3.frag" />
     <None Include="Test3.vs" />
+    <None Include="Test4.frag" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

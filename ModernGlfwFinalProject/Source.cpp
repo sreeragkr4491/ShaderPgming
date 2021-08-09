@@ -1021,8 +1021,466 @@
 //}
 
 
-//lab 9 
+//lab 9 rectangle
 
+//
+//#include<GL/glew.h> 
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include"Shader.h"     //1.Attach the shader file
+//
+//using namespace std;
+//
+////vertex shader coding part
+//
+//
+////fragment shader coding part
+//
+//
+//void main()
+//{
+//	GLint wid = 1200; //*window variable
+//	GLint height = 800; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw library error" << endl;
+//	}
+//	else
+//	{
+//		cout << "Success og glfw" << endl;
+//	}
+//	window = glfwCreateWindow(wid, height, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//
+//	// 2.   **************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	GLint success;
+//	GLchar information[512];
+//	//vertex shader 
+//
+//	//2.Code have been shifted to vertex file
+//
+//	//fragment shader
+//
+//	//3.Code have been shifted to frag file
+//
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//
+//	//attach shader files
+//	Shader Myshader("Test3.vs", "Test3.frag");     //4.Create the reference of the class
+//
+//	GLfloat vertices[] =
+//	{
+//		-0.5f, -0.5f, 0.0f,1,0,0,
+//		0.0f, -0.5f, 0.0f,0,1,0,
+//		0.0f, 0.5f, 0.0f,0,0,1,
+//		-0.5f, 0.5f, 0.0f,1,1,0
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//
+//	//vertex
+//	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(4);
+//
+//	//color
+//	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(5);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0.5, 1, 1, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		Myshader.Use();           //5.use the shader file
+//		glBindVertexArray(VAO);
+//
+//		//drawing
+//		glDrawArrays(GL_QUADS, 0, 4);
+//		//glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+//
+
+
+//lab 10 draw maultiple objects with the help of buffers like VAO,VBO
+
+//
+//#include<GL/glew.h> 
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include"Shader.h"     //1.Attach the shader file
+//
+//using namespace std;
+//
+//void main()
+//{
+//	GLint wid = 1200; //*window variable
+//	GLint height = 800; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw library error" << endl;
+//	}
+//	else
+//	{
+//		cout << "Success og glfw" << endl;
+//	}
+//	window = glfwCreateWindow(wid, height, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//
+//	// 2.   **************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	GLint success;
+//	GLchar information[512];
+//	//vertex shader 
+//
+//	//2.Code have been shifted to vertex file
+//
+//	//fragment shader
+//
+//	//3.Code have been shifted to frag file
+//
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//
+//	//attach shader files
+//	Shader Myshader("Test3.vs", "Test3.frag");     //4.Create the reference of the class
+//
+//	//step 1 indices
+//	GLfloat vertices[] =
+//	{
+//		//first triangle
+//	   0.5f, 0.5f, 0.0f, 1, 0, 0,  // top right
+//	   0.5f, -0.5f, 0.0f, 0, 1, 0,  // bottom right
+//	   0.0f, 0.0f, 0.0f, 0, 0, 1
+//	};
+//	GLfloat vertices1[] =
+//	{
+//		// second triangle
+//		-0.5f, -0.5f, 0.0f,0,1,0,  // bottom right
+//		-0.5f, 0.5f, 0.0f,1,0,0,  // bottom left
+//		0.25f, 0.0f, 0.0f,0,0,1   // top left
+//	};
+//
+//	////step 2 make buffer as an array
+//	GLuint VBO[2], VAO[2];//vertex buffer obj//vert array obj
+//	glGenVertexArrays(2, VAO);
+//	glGenBuffers(2, VBO);
+//
+//	////step 3 make sure all variables should be treated as array variable use the proper variable n parameters
+//	//for first buffer
+//	glBindVertexArray(VAO[0]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(4);
+//	//color
+//	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(5);
+//
+//
+//
+//	//for second buffer
+//	glBindVertexArray(VAO[1]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(4);
+//	//color
+//	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(5);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0.5, 1, 1, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		Myshader.Use();           //5.use the shader file
+//
+//		////step 4 must use the array variable
+//		//for first drawing call
+//		glBindVertexArray(VAO[0]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 6);
+//		//glBindVertexArray();
+//
+//
+//		//for second drawing call
+//		glBindVertexArray(VAO[1]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 6);
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//
+//	////step 5 must use the proper variable and position of first and second parameter
+//	glDeleteVertexArrays(1, VAO);
+//	glDeleteBuffers(2, VBO);
+//	glfwTerminate();
+//}
+
+
+//lab 11 Assignment draw 4 triangles by the above buufer methods
+
+//
+//#include<GL/glew.h> 
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include"Shader.h"     //1.Attach the shader file
+//
+//using namespace std;
+//
+//void main()
+//{
+//	GLint wid = 1200; //*window variable
+//	GLint height = 800; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw library error" << endl;
+//	}
+//	else
+//	{
+//		cout << "Success og glfw" << endl;
+//	}
+//	window = glfwCreateWindow(wid, height, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//
+//	// 2.   **************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	GLint success;
+//	GLchar information[512];
+//
+//	//attach shader files
+//	Shader Myshader("Test3.vs", "Test3.frag");     //4.Create the reference of the class
+//
+//	//step 1 indices
+//	GLfloat vertices[] =
+//	{
+//		//first triangle
+//	   0.5f, 0.5f, 0.0f, 1, 0, 0,  // top right
+//	   0.5f, -0.5f, 0.0f, 0, 1, 0,  // bottom right
+//	   0.0f, 0.0f, 0.0f, 0, 0, 1    //center
+//	};
+//	GLfloat vertices1[] =
+//	{
+//		// second triangle
+//		-0.5f, -0.5f, 0.0f,0,1,0,  // bottom right
+//		-0.5f, 0.5f, 0.0f,1,0,0,  // bottom left
+//		0.0f, 0.0f, 0.0f,0,0,1   // top left
+//	};
+//	GLfloat vertices2[] =
+//	{
+//		// 3rd triangle
+//		0.4f, -0.7f, 0.0f,0,1,0,  // bottom right
+//		-0.4f, -0.7f, 0.0f,1,0,0,  // bottom left
+//		0.0f, 0.0f, 0.0f,0,0,1   // top left
+//	};
+//	GLfloat vertices3[] =
+//	{
+//		// 4th triangle
+//		-0.4f, 0.7f, 0.0f,0,1,0,  // bottom right
+//		0.4f, 0.7f, 0.0f,1,0,0,  // bottom left
+//		0.0f, 0.0f, 0.0f,0,0,1   // top left
+//	};
+//
+//	////step 2 make buffer as an array
+//	GLuint VBO[4], VAO[4];//vertex buffer obj//vert array obj
+//	glGenVertexArrays(4, VAO);
+//	glGenBuffers(4, VBO);
+//
+//	////step 3 make sure all variables should be treated as array variable use the proper variable n parameters
+//	//for first buffer
+//	glBindVertexArray(VAO[0]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(4);
+//	//color
+//	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(5);
+//
+//
+//
+//	//for second buffer
+//	glBindVertexArray(VAO[1]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(4);
+//	//color
+//	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(5);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	//for 3rd buffer
+//	glBindVertexArray(VAO[2]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[2]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(4);
+//	//color
+//	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(5);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	//for 4th buffer
+//	glBindVertexArray(VAO[3]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[3]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices3), vertices3, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(4);
+//	//color
+//	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(5);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0.5, 1, 1, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		Myshader.Use();           //5.use the shader file
+//
+//		////step 4 must use the array variable
+//		//for first drawing call
+//		glBindVertexArray(VAO[0]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 6);
+//		//glBindVertexArray();
+//
+//
+//		//for second drawing call
+//		glBindVertexArray(VAO[1]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 6);
+//
+//		//for 3rd drawing call
+//		glBindVertexArray(VAO[2]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 6);
+//
+//		//for 4th drawing call
+//		glBindVertexArray(VAO[3]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 6);
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//
+//	////step 5 must use the proper variable and position of first and second parameter
+//	glDeleteVertexArrays(1, VAO);
+//	glDeleteBuffers(2, VBO);
+//	glfwTerminate();
+//}
+
+
+//lab 12
+
+// Create two shader programs where the second program 
+//uses a different fragment shader that outputs the color 
+//yellow; draw both triangles again where one outputs the 
+//color orange:
+
+// for this proj i m using two frag(test,test1) shaders, ** mind it
+// and i am using modified shader1.h file, bcs in shader file also some changes are there
+
+// make sure change the shader1.h
 
 #include<GL/glew.h> 
 #include<GLFW/glfw3.h>
@@ -1030,12 +1488,6 @@
 #include"Shader.h"     //1.Attach the shader file
 
 using namespace std;
-
-//vertex shader coding part
-
-
-//fragment shader coding part
-
 
 void main()
 {
@@ -1070,42 +1522,82 @@ void main()
 
 	GLint success;
 	GLchar information[512];
-	//vertex shader 
-
-	//2.Code have been shifted to vertex file
-
-	//fragment shader
-
-	//3.Code have been shifted to frag file
-
-
-
-	//Shader linking of vertex and fragment shader
-
 
 	//attach shader files
 	Shader Myshader("Test3.vs", "Test3.frag");     //4.Create the reference of the class
+	Shader Myshader1("Test3.vs", "Test4.frag");
 
+	//step 1 indices
 	GLfloat vertices[] =
 	{
-		-0.5f, -0.5f, 0.0f,1,0,0,
-		0.0f, -0.5f, 0.0f,0,1,0,
-		0.0f, 0.5f, 0.0f,0,0,1,
-		-0.5f, 0.5f, 0.0f,1,1,0
+		//first triangle
+	   0.5f, 0.5f, 0.0f, 1, 0, 0,  // top right
+	   0.5f, -0.5f, 0.0f, 0, 1, 0,  // bottom right
+	   0.0f, 0.0f, 0.0f, 0, 0, 1    //center
+	};
+	GLfloat vertices1[] =
+	{
+		// second triangle
+		-0.5f, -0.5f, 0.0f, // bottom right
+		-0.5f, 0.5f, 0.0f, // bottom left
+		0.0f, 0.0f, 0.0f  // top left
+	};
+	GLfloat vertices2[] =
+	{
+		// 3rd triangle
+		0.4f, -0.7f, 0.0f,0,1,0,  // bottom right
+		-0.4f, -0.7f, 0.0f,1,0,0,  // bottom left
+		0.0f, 0.0f, 0.0f,0,0,1   // top left
+	};
+	GLfloat vertices3[] =
+	{
+		// 4th triangle
+		-0.4f, 0.7f, 0.0f,0,1,0,  // bottom right
+		0.4f, 0.7f, 0.0f,1,0,0,  // bottom left
+		0.0f, 0.0f, 0.0f,0,0,1   // top left
 	};
 
-	GLuint VBO, VAO;//vertex buffer obj//vert array obj
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	////step 2 make buffer as an array
+	GLuint VBO[4], VAO[4];//vertex buffer obj//vert array obj
+	glGenVertexArrays(4, VAO);
+	glGenBuffers(4, VBO);
 
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	////step 3 make sure all variables should be treated as array variable use the proper variable n parameters
+	//for first buffer
+	glBindVertexArray(VAO[0]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
 	//vertex
 	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(4);
+	//color
+	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(5);
 
+
+
+	//for second buffer
+	glBindVertexArray(VAO[1]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
+	//vertex
+	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(4);
+	//color
+	/*glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(5);*/
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+
+	//for 3rd buffer
+	glBindVertexArray(VAO[2]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[2]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
+	//vertex
+	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(4);
 	//color
 	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(5);
@@ -1114,7 +1606,19 @@ void main()
 	glBindVertexArray(0);
 
 
+	//for 4th buffer
+	glBindVertexArray(VAO[3]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[3]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices3), vertices3, GL_STATIC_DRAW);
+	//vertex
+	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(4);
+	//color
+	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(5);
 
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 	//gameloop
 	while (!glfwWindowShouldClose(window))
@@ -1125,19 +1629,38 @@ void main()
 
 		//linking the shader / calling the shader
 		Myshader.Use();           //5.use the shader file
-		glBindVertexArray(VAO);
 
+		////step 4 must use the array variable
+		//for first drawing call
+		glBindVertexArray(VAO[0]);
 		//drawing
-		glDrawArrays(GL_QUADS, 0, 4);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 		//glBindVertexArray();
+
+
+
+		//for 3rd drawing call
+		glBindVertexArray(VAO[2]);
+		//drawing
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+
+		//for 4th drawing call
+		glBindVertexArray(VAO[3]);
+		//drawing
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+
+		Myshader1.Use();
+		//for second drawing call
+		glBindVertexArray(VAO[1]);
+		//drawing
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 
 		glfwSwapBuffers(window);//to swap the new color for window
 		glfwPollEvents();
 	}
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
+
+	////step 5 must use the proper variable and position of first and second parameter
+	glDeleteVertexArrays(1, VAO);
+	glDeleteBuffers(2, VBO);
 	glfwTerminate();
 }
-
-
-

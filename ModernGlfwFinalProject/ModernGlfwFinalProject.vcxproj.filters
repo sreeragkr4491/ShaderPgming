@@ -32,5 +32,14 @@
     <None Include="Test3.vs" />
     <None Include="Test3.frag" />
     <None Include="Test4.frag" />
+    <None Include="Test5.frag" />
+    <None Include="Test6.frag" />
+    <None Include="TestText.vs" />
+    <None Include="TestText.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="IMG_5389.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

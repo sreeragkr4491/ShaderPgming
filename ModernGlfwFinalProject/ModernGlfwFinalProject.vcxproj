@@ -157,8 +157,10 @@
     <None Include="Test4.frag" />
     <None Include="Test5.frag" />
     <None Include="Test6.frag" />
+    <None Include="TestText1.frag" />
     <None Include="TestText.frag" />
     <None Include="TestText.vs" />
+    <None Include="TestText1.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG" />

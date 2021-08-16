@@ -1489,25 +1489,12 @@
 //#include"Shader.h"     //1.Attach the shader file
 //
 //using namespace std;
-//void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 //
-//float red = 255, green = 255, blue = 255;
-//
-//GLfloat rotationx = 0.0f;
-//GLfloat rotationy = 0.0f;
-//
-////scaling
-//GLfloat scalefactor = 1.0f;
-//GLboolean scaleup = false;
-//
-////translate
-//GLfloat transx = 0;
-//GLfloat transy = 0;
 //
 //void main()
 //{
 //	GLint wid = 1200; //*window variable
-//	GLint height = 800; //*window variable
+//	GLint height = 1000; //*window variable
 //	GLFWwindow* window; //pointer var as window that will hold address only 
 //	glfwInit();
 //
@@ -1523,7 +1510,7 @@
 //
 //	// make the window context current
 //	glfwMakeContextCurrent(window);
-//	glfwSetKeyCallback(window, keyCallback);
+//	
 //
 //	// 2.   **************** here must add glew function use*********
 //	if (glewInit() != GLEW_OK)
@@ -1547,28 +1534,28 @@
 //
 //
 //	//step 1 indices
-//	GLfloat vertices[] =
+//	GLfloat vertices[] =    //right
 //	{
 //		//first triangle
 //	   0.5f, 0.5f, 0.0f,  // top right
 //	   0.5f, -0.5f, 0.0f,  // bottom right
 //	   0.0f, 0.0f, 0.0f,   //center
 //	};
-//	GLfloat vertices1[] =
+//	GLfloat vertices1[] =     //left
 //	{
 //		// second triangle
 //		-0.5f, -0.5f, 0.0f, // bottom right
 //		-0.5f, 0.5f, 0.0f, // bottom left
 //		0.0f, 0.0f, 0.0f  // top left
 //	};
-//	GLfloat vertices2[] =
+//	GLfloat vertices2[] =      //top
 //	{
 //		// 3rd triangle
 //		0.4f, -0.7f, 0.0f,  // bottom right
 //		-0.4f, -0.7f, 0.0f, // bottom left
 //		0.0f, 0.0f, 0.0f,   // top left
 //	};
-//	GLfloat vertices3[] =
+//	GLfloat vertices3[] =   //bottom
 //	{
 //		// 4th triangle
 //		-0.4f, 0.7f, 0.0f,0,1,0,  // bottom right
@@ -1677,16 +1664,6 @@
 //		//for 4th drawing call
 //		glBindVertexArray(VAO[3]);
 //		//drawing
-//		
-//		//scaling
-//		glScalef(scalefactor, scalefactor, scalefactor);
-//
-//		//translate
-//		static float translate = 0;
-//		glTranslatef(-0.3 + translate, -0.3, -5);
-//
-//		//move speed
-//		translate += 0.2;
 //		glDrawArrays(GL_TRIANGLES, 0, 6);
 //
 //		glfwSwapBuffers(window);//to swap the new color for window
@@ -1697,112 +1674,8 @@
 //	glDeleteBuffers(2, VBO);
 //	glfwTerminate();
 //}
-//
-//void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
-//{
-//	//std::cout << key << std::endl;
-//
-//	const GLfloat rotationSpeed = 10;
-//	const GLfloat trans = 1;
-//
-//	// actions are GLFW_PRESS, GLFW_RELEASE or GLFW_REPEAT
-//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
-//	{
-//		switch (key)
-//		{
-//		case GLFW_KEY_UP:
-//			rotationx -= rotationSpeed;
-//			break;
-//		case GLFW_KEY_DOWN:
-//			rotationx += rotationSpeed;
-//			break;
-//		case GLFW_KEY_RIGHT:
-//			rotationy += rotationSpeed;
-//			break;
-//		case GLFW_KEY_LEFT:
-//			rotationy -= rotationSpeed;
-//			break;
-//
-//		case GLFW_KEY_W:
-//			transy -= trans;
-//			break;
-//
-//		case GLFW_KEY_S:
-//			transy += trans;
-//			break;
-//
-//		case GLFW_KEY_A:
-//			transx -= trans;
-//			break;
-//
-//		case GLFW_KEY_D:
-//			transx += trans;
-//			break;
-//
-//		default:
-//			break;
-//		}
-//	}
-//
-//
-//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
-//	{
-//		switch (key)
-//		{
-//		case GLFW_KEY_F1:
-//			red = 255;
-//			green = 0;
-//			blue = 0;
-//			break;
-//		case GLFW_KEY_F2:
-//			red = 0;
-//			green = 255;
-//			blue = 0;
-//			break;
-//		case GLFW_KEY_F3:
-//			red = 0;
-//			green = 0;
-//			blue = 255;
-//			break;
-//		case GLFW_KEY_F4:
-//			red = 255;
-//			green = 0;
-//			blue = 255;
-//			break;
-//		}
-//	}
-//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
-//	{
-//		switch (key)
-//		{
-//		case GLFW_KEY_G:
-//		{
-//
-//			if (scalefactor <= 2.0)
-//			{
-//				scalefactor += 0.1;
-//			}
-//			else
-//				scaleup = false;
-//			break;
-//		}
-//		case GLFW_KEY_H:
-//		{
-//
-//			if (scalefactor >= 0.5)
-//			{
-//				scalefactor -= 0.1;
-//
-//			}
-//			else
-//				scaleup = true;
-//			break;
-//		}
-//
-//		}
-//
-//	}
-//}
+
+
 
 
 //lab 13 Texturing on triangle
@@ -1875,7 +1748,7 @@
 //		-0.5f, -0.5f, 0.0f,0.0,0.0,
 //		0.0f, -0.5f, 0.0f,1.0,0.0,
 //		0.0f, 0.5f, 0.0f,0.5,1.0
-//		/*-0.5f, 0.5f, 0.0f*/
+//		
 //	};
 //
 //	GLuint VBO, VAO;//vertex buffer obj//vert array obj
@@ -1939,24 +1812,156 @@
 
 //lab 14 Texturing on rectangle
 
+//
+//#include<GL/glew.h> 
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include"Shader.h"     //1.Attach the shader file
+//#include"SOIL2/SOIL2.h"
+//using namespace std;
+//
+////vertex shader coding part
+//
+//
+////fragment shader coding part
+//
+//
+//void main()
+//{
+//	GLint wid = 1200; //*window variable
+//	GLint height1 = 800; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw library error" << endl;
+//	}
+//	else
+//	{
+//		cout << "Success og glfw" << endl;
+//	}
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//
+//	// 2.   **************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	GLint success;
+//	GLchar information[512];
+//	//vertex shader 
+//
+//	//2.Code have been shifted to vertex file
+//
+//	//fragment shader
+//
+//	//3.Code have been shifted to frag file
+//
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//
+//	//attach shader files
+//	Shader Myshader("TestText.vs", "TestText.frag");     //4.Create the reference of the class
+//
+//	GLfloat vertices[] =
+//	{
+//		/*-0.5f, -0.5f, 0.0f,   0.0,0.0,
+//		0.0f, -0.5f, 0.0f,    0.0,1.0,
+//		0.0f, 0.5f, 0.0f,     1.0,1.0,
+//		-0.5f, 0.5f, 0.0f,    1.0,0.0*/
+//
+//		-1.0f, -1.0f, 0.0f,   0.0,1.0,
+//		1.0f, -1.0f, 0.0f,    0.0,0.0,
+//		1.0f, 1.0f, 0.0f,     1.0,0.0,
+//		-1.0f, 1.0f, 0.0f,    1.0,1.0
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	unsigned int texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("IMG_5389.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0.5, 1, 1, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		Myshader.Use();           //5.use the shader file
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glBindVertexArray(VAO);
+//
+//		//drawing
+//		glDrawArrays(GL_QUADS, 0, 4);
+//		//glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+
+
+//Lab 15 4 Triangles with texture in one of those.
 
 #include<GL/glew.h> 
 #include<GLFW/glfw3.h>
 #include<iostream>
 #include"Shader.h"     //1.Attach the shader file
 #include"SOIL2/SOIL2.h"
+
 using namespace std;
-
-//vertex shader coding part
-
-
-//fragment shader coding part
 
 
 void main()
 {
 	GLint wid = 1200; //*window variable
-	GLint height1 = 800; //*window variable
+	GLint height1 = 1000; //*window variable
 	GLFWwindow* window; //pointer var as window that will hold address only 
 	glfwInit();
 
@@ -1973,6 +1978,7 @@ void main()
 	// make the window context current
 	glfwMakeContextCurrent(window);
 
+
 	// 2.   **************** here must add glew function use*********
 	if (glewInit() != GLEW_OK)
 	{
@@ -1986,63 +1992,130 @@ void main()
 
 	GLint success;
 	GLchar information[512];
-	//vertex shader 
-
-	//2.Code have been shifted to vertex file
-
-	//fragment shader
-
-	//3.Code have been shifted to frag file
-
-
-
-	//Shader linking of vertex and fragment shader
-
 
 	//attach shader files
-	Shader Myshader("TestText.vs", "TestText.frag");     //4.Create the reference of the class
+	Shader Myshader("Test3.vs", "Test3.frag");     //4.Create the reference of the class
+	Shader Myshader1("Test3.vs", "Test4.frag");
+	Shader Myshader2("TestText1.vs", "TestText1.frag");
+	Shader Myshader3("Test3.vs", "Test6.frag");
 
-	GLfloat vertices[] =
+
+	//step 1 indices
+	GLfloat vertices[] =    //right
 	{
-		-0.5f, -0.5f, 0.0f,0.0,0.0,
-		0.0f, -0.5f, 0.0f,1.0,0.0,
-		0.0f, 0.5f, 0.0f,1.0,1.0,
-		-0.5f, 0.5f, 0.0f,0.0,1.0
+		//first triangle
+	   0.5f, 0.5f, 0.0f,  // top right
+	   0.5f, -0.5f, 0.0f,  // bottom right
+	   0.0f, 0.0f, 0.0f,   //center
+	};
+	GLfloat vertices1[] =     //left
+	{
+		// second triangle
+		-0.5f, -0.5f, 0.0f, // bottom right
+		-0.5f, 0.5f, 0.0f, // bottom left
+		0.0f, 0.0f, 0.0f  // top left
+	};
+	
+	GLfloat vertices2[] =   //top
+	{
+		// 3rd triangle
+		-0.4f, 0.7f, 0.0f,0.0,0.0,  // bottom right    //texture cordinates
+		0.4f, 0.7f, 0.0f,1.0,0.0,  // bottom left
+		0.0f, 0.0f, 0.0f,0.5,1.0 // top left
+	};
+	GLfloat vertices3[] =      //bottom
+	{
+		// 4th triangle
+		-0.4f, 0.7f, 0.0f,0,1,0,    // bottom right   
+		0.4f, 0.7f,0.0f,1,0,0,  // bottom left							
+		0.0f, 0.0f, 0.0f,0,0,1     // top left				
+
 	};
 
-	GLuint VBO, VAO;//vertex buffer obj//vert array obj
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	////step 2 make buffer as an array
+	GLuint VBO[4], VAO[4];//vertex buffer obj//vert array obj
+	glGenVertexArrays(4, VAO);
+	glGenBuffers(4, VBO);
 
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	////step 3 make sure all variables should be treated as array variable use the proper variable n parameters
+	
+	//for first buffer
+	glBindVertexArray(VAO[0]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
-	glEnableVertexAttribArray(0);
+	//vertex
+	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(4);
+	//color
+	/*glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(5);*/
 
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(2);
 
+
+	//for second buffer
+	glBindVertexArray(VAO[1]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
+	//vertex
+	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(4);
+	//color
+	/*glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(5);*/
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
 
-	unsigned int texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	//texturing
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	//for 3rd buffer
+	glBindVertexArray(VAO[2]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[2]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
+	//vertex
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(0);
+	//color
+	/*glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(5);*/
 
-	int width, height, nrChannels;
-	unsigned char* image = SOIL_load_image("IMG_5389.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	SOIL_free_image_data(image);
-	glBindTexture(GL_TEXTURE_2D, 0);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(2);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+	
+
+		unsigned int texture;
+		glGenTextures(1, &texture);
+		glBindTexture(GL_TEXTURE_2D, texture);
+		//texturing
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	
+		int width, height, nrChannels;
+		unsigned char* image = SOIL_load_image("IMG_5389.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+		glGenerateMipmap(GL_TEXTURE_2D);
+		SOIL_free_image_data(image);
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+
+	//for 4th buffer
+	glBindVertexArray(VAO[3]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO[3]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices3), vertices3, GL_STATIC_DRAW);
+	//vertex
+	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(4);
+	//color
+	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(5);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 	//gameloop
 	while (!glfwWindowShouldClose(window))
@@ -2051,26 +2124,47 @@ void main()
 		glClearColor(0.5, 1, 1, 0); //for rgb color change
 		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
 
-		//linking the shader / calling the shader
-		Myshader.Use();           //5.use the shader file
-		glBindTexture(GL_TEXTURE_2D, texture);
-		glBindVertexArray(VAO);
 
+		//linking the shader / calling the shader
+		Myshader1.Use();           //5.use the shader file
+
+		////step 4 must use the array variable
+		//for first drawing call
+		glBindVertexArray(VAO[0]);
 		//drawing
-		glDrawArrays(GL_QUADS, 0, 4);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 		//glBindVertexArray();
+
+
+		Myshader3.Use();
+		//for second drawing call
+		glBindVertexArray(VAO[1]);
+		//drawing
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+
+		Myshader2.Use();
+		//for 3rd drawing call
+		glBindTexture(GL_TEXTURE_2D, texture);
+		glBindVertexArray(VAO[2]);
+		//drawing
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+
+		Myshader.Use();
+		//for 4th drawing call
+		glBindVertexArray(VAO[3]);
+		//drawing
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		glfwSwapBuffers(window);//to swap the new color for window
 		glfwPollEvents();
 	}
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
+	////step 5 must use the proper variable and position of first and second parameter
+	glDeleteVertexArrays(1, VAO);
+	glDeleteBuffers(2, VBO);
 	glfwTerminate();
 }
-
-
-
-
 
 
 

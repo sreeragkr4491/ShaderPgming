@@ -42,9 +42,38 @@
     <None Include="TestText1.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="TestText2.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="TestText2.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="TestText3.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="TestText3.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="TestText4.vs" />
+    <None Include="TestText4.frag" />
+    <None Include="TestText6.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="TestText6.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="TestText7.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="TestText7.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="pubg-mobile-2.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

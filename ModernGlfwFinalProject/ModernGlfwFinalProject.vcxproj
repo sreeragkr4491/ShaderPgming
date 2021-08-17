@@ -161,9 +161,20 @@
     <None Include="TestText.frag" />
     <None Include="TestText.vs" />
     <None Include="TestText1.vs" />
+    <None Include="TestText2.frag" />
+    <None Include="TestText2.vs" />
+    <None Include="TestText3.frag" />
+    <None Include="TestText3.vs" />
+    <None Include="TestText4.frag" />
+    <None Include="TestText4.vs" />
+    <None Include="TestText6.frag" />
+    <None Include="TestText6.vs" />
+    <None Include="TestText7.frag" />
+    <None Include="TestText7.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG" />
+    <Image Include="pubg-mobile-2.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

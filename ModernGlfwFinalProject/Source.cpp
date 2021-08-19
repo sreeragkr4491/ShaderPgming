@@ -3016,17 +3016,694 @@
 
 
 
+//#include<GL/glew.h> 
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include"Shader.h"     //1.Attach the shader file
+//#include"SOIL2/SOIL2.h"
+//using namespace std;
+//
+//vertex shader coding part
+//
+//
+//fragment shader coding part
+//
+//
+//void main()
+//{
+//	GLint wid = 1200; //*window variable
+//	GLint height1 = 800; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw library error" << endl;
+//	}
+//	else
+//	{
+//		cout << "Success og glfw" << endl;
+//	}
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	 make the window context current
+//	glfwMakeContextCurrent(window);
+//
+//	 2.   **************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	 till here glew stuff
+//
+//
+//	GLint success;
+//	GLchar information[512];
+//	vertex shader 
+//	
+//	2.Code have been shifted to vertex file
+//
+//	fragment shader
+//	
+//	3.Code have been shifted to frag file
+//
+//
+//
+//	Shader linking of vertex and fragment shader
+//	
+//
+//	attach shader files
+//	Shader Myshader("TestText7.vs", "TestText7.frag");     //4.Create the reference of the class
+//
+//	GLfloat vertices[] =
+//	{
+//		-1.0f, -1.0f, 0.0f,   0.0,1.0,
+//		1.0f, -1.0f, 0.0f,    0.0,0.0,
+//		1.0f, 1.0f, 0.0f,     1.0,0.0,
+//		-1.0f, 1.0f, 0.0f,    1.0,1.0
+//		
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3* sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	
+//
+//	texture1
+//	unsigned int texture1;
+//	glGenTextures(1, &texture1);
+//	glBindTexture(GL_TEXTURE_2D, texture1);
+//	texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("IMG_5389.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//	texture2
+//	unsigned int texture2;
+//	glGenTextures(1, &texture2);
+//	glBindTexture(GL_TEXTURE_2D, texture2);
+//	texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width2, height2, nrChannels2;
+//	unsigned char* image2 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image2);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image2);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		for the bg color
+//		glClearColor(0.5, 1, 1, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
+//
+//		linking the shader / calling the shader
+//		Myshader.Use();           //5.use the shader file
+//		glUniform1i(glGetUniformLocation(Myshader.Program, "mytexture1"), 0);
+//
+//		glUniform1i(glGetUniformLocation(Myshader.Program, "mytexture2"), 1);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture1);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture2);
+//		glBindVertexArray(VAO);				
+//
+//		drawing
+//		glDrawArrays(GL_QUADS, 0, 4);
+//		glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+
+
+
+//lab 19 3 textures on single *****NOT POSSIBLE WITH THIS FUNCTION*****
+
+//
+//#include<GL/glew.h> 
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include"Shader.h"     //1.Attach the shader file
+//#include"SOIL2/SOIL2.h"
+//using namespace std;
+//
+////vertex shader coding part
+//
+//
+////fragment shader coding part
+//
+//
+//void main()
+//{
+//	GLint wid = 1200; //*window variable
+//	GLint height1 = 800; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw library error" << endl;
+//	}
+//	else
+//	{
+//		cout << "Success og glfw" << endl;
+//	}
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//
+//	// 2.   **************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	GLint success;
+//	GLchar information[512];
+//	//vertex shader 
+//
+//	//2.Code have been shifted to vertex file
+//
+//	//fragment shader
+//
+//	//3.Code have been shifted to frag file
+//
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//
+//	//attach shader files
+//	Shader Myshader("MultiText.vs", "MultiText.frag");     //4.Create the reference of the class
+//
+//	GLfloat vertices[] =
+//	{
+//		-1.0f, -1.0f, 0.0f,   0.0,1.0,
+//		1.0f, -1.0f, 0.0f,    0.0,0.0,
+//		1.0f, 1.0f, 0.0f,     1.0,0.0,
+//		-1.0f, 1.0f, 0.0f,    1.0,1.0
+//
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//
+//
+//	//texture1
+//	unsigned int texture1;
+//	glGenTextures(1, &texture1);
+//	glBindTexture(GL_TEXTURE_2D, texture1);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("IMG_5389.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//	//texture2
+//	unsigned int texture2;
+//	glGenTextures(1, &texture2);
+//	glBindTexture(GL_TEXTURE_2D, texture2);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	//int width2, height2, nrChannels2;
+//	unsigned char* image2 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image2);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image2);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//texture3
+//	unsigned int texture3;
+//	glGenTextures(1, &texture3);
+//	glBindTexture(GL_TEXTURE_2D, texture3);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	//int width2, height2, nrChannels2;
+//	unsigned char* image3 = SOIL_load_image("pubg-mobile-2.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image3);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image3);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0.5, 1, 1, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		Myshader.Use();           //5.use the shader file
+//		glUniform1i(glGetUniformLocation(Myshader.Program, "mytexture1"), 0);
+//
+//		glUniform1i(glGetUniformLocation(Myshader.Program, "mytexture2"), 1);
+//
+//		glUniform1i(glGetUniformLocation(Myshader.Program, "mytexture3"), 2);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture1);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture2);
+//		glActiveTexture(GL_TEXTURE2);
+//		glBindTexture(GL_TEXTURE_2D, texture3);
+//		glBindVertexArray(VAO);
+//
+//		//drawing
+//		glDrawArrays(GL_QUADS, 0, 4);
+//		//glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+
+
+//lab 20 4 triangle with multitexture in two of those
+		
+
+
+//
+//#include<GL/glew.h> 
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include"Shader.h"     //1.Attach the shader file
+//#include"SOIL2/SOIL2.h"
+//
+//using namespace std;
+//
+//
+//void main()
+//{
+//	GLint wid = 1200; //*window variable
+//	GLint height1 = 1000; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw library error" << endl;
+//	}
+//	else
+//	{
+//		cout << "Success og glfw" << endl;
+//	}
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//
+//
+//	// 2.   **************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	GLint success;
+//	GLchar information[512];
+//
+//	//attach shader files
+//	Shader Myshader("TestText4.vs", "TestText4.frag");              //4.Create the reference of the class
+//	Shader Myshader1("MultiText2.vs", "MultiText2.frag");
+//	Shader Myshader2("TestText6.vs", "TestText6.frag");
+//	Shader Myshader3("MultiText3.vs", "MultiText3.vs");
+//
+//
+//	//step 1 indices
+//	GLfloat right[] =    //right
+//	{
+//		//first triangle
+//	   0.5f, 0.5f, 0.0f,0.0,0.0,  // top right
+//	   0.5f, -0.5f, 0.0f,1.0,0.0,  // bottom right
+//	   0.0f, 0.0f, 0.0f,0.5,1.0    //center
+//	};
+//	GLfloat left[] =     //left
+//	{
+//		// second triangle
+//		-0.5f, -0.5f, 0.0f,0.0,0.0, // bottom right
+//		-0.5f, 0.5f, 0.0f,1.0,0.0, // bottom left
+//		0.0f, 0.0f, 0.0f,0.5,1.0 // top left
+//	};
+//
+//	GLfloat top[] =   //top
+//	{
+//		// 3rd triangle
+//		-0.4f, 0.7f, 0.0f,   0,1,0,    0.0,0.0,  // bottom right    //texture cordinates
+//		0.4f, 0.7f, 0.0f,    1,0,0,    1.0,0.0,  // bottom left
+//		0.0f, 0.0f, 0.0f,    0,0,1,    0.5,1.0 // top left
+//	};
+//	GLfloat bottom[] =      //bottom
+//	{
+//		// 4th triangle
+//		0.4f, -0.7f, 0.0f,  0,1,0,   0.0,0.0,    // bottom right   
+//		-0.4f, -0.7f,0.0f,  1,0,0,   1.0,0.0,  // bottom left							
+//		0.0f, 0.0f, 0.0f,   0,0,1,   0.5,1.0     // top left				
+//
+//	};
+//
+//	////step 2 make buffer as an array
+//	GLuint VBO[4], VAO[4];//vertex buffer obj//vert array obj
+//	glGenVertexArrays(4, VAO);
+//	glGenBuffers(4, VBO);
+//
+//	////step 3 make sure all variables should be treated as array variable use the proper variable n parameters
+//
+//	//for first buffer
+//	glBindVertexArray(VAO[0]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(right), right, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//	//color
+//	/*glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(5);*/
+//
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//	unsigned int texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("IMG_5389.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//texture2
+//			unsigned int texture5;
+//			glGenTextures(1, &texture5);
+//			glBindTexture(GL_TEXTURE_2D, texture5);
+//			//texturing
+//			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//		
+//			//int width2, height2, nrChannels2;
+//			unsigned char* image2 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image2);
+//			glGenerateMipmap(GL_TEXTURE_2D);
+//			SOIL_free_image_data(image2);
+//			glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//for second buffer
+//	glBindVertexArray(VAO[1]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(left), left, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//	//color
+//	/*glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(5);*/
+//
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//	unsigned int texture2;
+//	glGenTextures(1, &texture2);
+//	glBindTexture(GL_TEXTURE_2D, texture2);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width3, height3, nrChannels3;
+//	unsigned char* image3 = SOIL_load_image("IMG_5389.jpg", &width3, &height3, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width3, height3, 0, GL_RGBA, GL_UNSIGNED_BYTE, image3);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image3);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//	//texture2
+//	unsigned int texture6;
+//	glGenTextures(1, &texture6);
+//	glBindTexture(GL_TEXTURE_2D, texture6);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	//int width2, height2, nrChannels2;
+//	unsigned char* image6 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image6);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image6);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//for 3rd buffer
+//	glBindVertexArray(VAO[2]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[2]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(top), top, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//	//color
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//
+//	unsigned int texture1;
+//	glGenTextures(1, &texture1);
+//	glBindTexture(GL_TEXTURE_2D, texture1);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width2, height2, nrChannels1;
+//	unsigned char* image1 = SOIL_load_image("IMG_5389.jpg", &width2, &height2, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width2, height2, 0, GL_RGBA, GL_UNSIGNED_BYTE, image1);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image1);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//for 4th buffer
+//	glBindVertexArray(VAO[3]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[3]);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(bottom), bottom, GL_STATIC_DRAW);
+//	//vertex
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//	//color
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//	//texture
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//	unsigned int texture4;
+//	glGenTextures(1, &texture4);
+//	glBindTexture(GL_TEXTURE_2D, texture4);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width4, height4, nrChannels4;
+//	unsigned char* image4 = SOIL_load_image("IMG_5389.jpg", &width4, &height4, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width2, height2, 0, GL_RGBA, GL_UNSIGNED_BYTE, image4);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image4);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0.5, 1, 1, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
+//
+//
+//		//linking the shader / calling the shader
+//		Myshader1.Use();           //5.use the shader file
+//		glUniform1i(glGetUniformLocation(Myshader1.Program, "mytexture1"), 0);
+//		
+//		glUniform1i(glGetUniformLocation(Myshader1.Program, "mytexture2"), 1);
+//		////step 4 must use the array variable
+//		//for first drawing call
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture5);
+//		glBindVertexArray(VAO[0]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 3);
+//		//glBindVertexArray();
+//
+//
+//		Myshader3.Use();
+//		glUniform1i(glGetUniformLocation(Myshader3.Program, "mytexture1"), 0);
+//
+//		glUniform1i(glGetUniformLocation(Myshader3.Program, "mytexture2"), 1);
+//		//for second drawing call
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture5);
+//		glBindVertexArray(VAO[1]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 3);
+//
+//
+//		Myshader2.Use();
+//		//for 3rd drawing call
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glBindVertexArray(VAO[2]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 3);
+//
+//
+//		Myshader.Use();
+//		//for 4th drawing call
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glBindVertexArray(VAO[3]);
+//		//drawing
+//		glDrawArrays(GL_TRIANGLES, 0, 3);
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	////step 5 must use the proper variable and position of first and second parameter
+//	glDeleteVertexArrays(1, VAO);
+//	glDeleteBuffers(2, VBO);
+//	glfwTerminate();
+//}
+
+
+
+
+//lab 21 Transformation on textured object
+
+
 #include<GL/glew.h> 
 #include<GLFW/glfw3.h>
 #include<iostream>
-#include"Shader.h"     //1.Attach the shader file
+#include"Shader.h"     
 #include"SOIL2/SOIL2.h"
+//step 1 add glm(Graphical lib for mathematics)
+#include <glm/glm.hpp>//Graphics Lib for mathematics.
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 using namespace std;
-
-//vertex shader coding part
-
-
-//fragment shader coding part
 
 
 void main()
@@ -3046,10 +3723,10 @@ void main()
 	}
 	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
 
-	// make the window context current
+	 //make the window context current
 	glfwMakeContextCurrent(window);
 
-	// 2.   **************** here must add glew function use*********
+	
 	if (glewInit() != GLEW_OK)
 	{
 		cout << "fail to open glew\n";
@@ -3062,27 +3739,17 @@ void main()
 
 	GLint success;
 	GLchar information[512];
-	//vertex shader 
-	
-	//2.Code have been shifted to vertex file
-
-	//fragment shader
-	
-	//3.Code have been shifted to frag file
-
-
-
-	//Shader linking of vertex and fragment shader
 	
 
 	//attach shader files
-	Shader Myshader("TestText.vs", "TestText.frag");     //4.Create the reference of the class
+	Shader Myshader("MultiText4.vs", "MultiText4.frag");     
 
 	GLfloat vertices[] =
 	{
-		-0.5f, -0.5f, 0.0f,0.0,0.0,
-		0.5f, -0.5f, 0.0f,1.0,0.0,
-		0.0f, 0.5f, 0.0f,0.5,1.0
+		-0.5f, -0.5f, 0.0f,   0.0,1.0,
+		0.5f, -0.5f, 0.0f,    0.0,0.0,
+		0.5f, 0.5f, 0.0f,     1.0,0.0,
+		-0.5f, 0.5f, 0.0f,    1.0,1.0
 		
 	};
 
@@ -3104,12 +3771,10 @@ void main()
 	glBindVertexArray(0);
 
 
-	
-
 	//texture1
-	unsigned int texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
+	unsigned int texture1;
+	glGenTextures(1, &texture1);
+	glBindTexture(GL_TEXTURE_2D, texture1);
 	//texturing
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -3133,20 +3798,13 @@ void main()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	int width2, height2, nrChannels2;
-	unsigned char* image2 = SOIL_load_image("pubg-mobile-2.jpg", &width2, &height2, 0, SOIL_LOAD_RGBA);
+	
+	unsigned char* image2 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image2);
 	glGenerateMipmap(GL_TEXTURE_2D);
 	SOIL_free_image_data(image2);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-
-	// linearly interpolate between both textures (80% container, 20% awesomeface)
-	//FragColor = mix(texture(texture, TexCoord), texture(texture2, TexCoord), 0.8);
-	//or
-	//FragColor = mix(texture(texture11, TexCoord),texture(texture22, TexCoord),0.8)*vec4(ourColor,1.0);
-
-	// texture samplers
 
 	//gameloop
 	while (!glfwWindowShouldClose(window))
@@ -3156,13 +3814,30 @@ void main()
 		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
 
 		//linking the shader / calling the shader
-		Myshader.Use();           //5.use the shader file
-		glBindTexture(GL_TEXTURE_2D, texture);
-		glBindVertexArray(VAO);				
+		Myshader.Use();           
+		glUniform1i(glGetUniformLocation(Myshader.Program, "mytexture1"), 0);
 
+		glUniform1i(glGetUniformLocation(Myshader.Program, "mytexture2"), 1);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture1);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, texture2);
+
+		//step 2 Transformation stuff
+		glm::mat4 transforme=glm::mat4(1.0f);
+		transforme = glm::translate(transforme, glm::vec3(0.5, 0.5, 0));
+		transforme = glm::scale(transforme, glm::vec3(0.25, 0.25, 0));
+		transforme = glm::rotate(transforme, tan((float)glfwGetTime()*2),glm::vec3(-1.0, 0, -1.0));
+
+		//step 3 get the uniform data from the vs shader file
+		unsigned int transformacces=glGetUniformLocation(Myshader.Program,"transform");
+		glUniformMatrix4fv(transformacces, 1, GL_FALSE, glm::value_ptr(transforme));
+
+
+		glBindVertexArray(VAO);				
 		//drawing
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		//glBindVertexArray();
+		glDrawArrays(GL_QUADS, 0, 4);
+		
 
 		glfwSwapBuffers(window);//to swap the new color for window
 		glfwPollEvents();
@@ -3171,27 +3846,3 @@ void main()
 	glDeleteBuffers(1, &VBO);
 	glfwTerminate();
 }
-
-
-
-
-
-//// linearly interpolate between both textures (80% container, 20% awesomeface)
-//FragColor = mix(texture(texture11, TexCoord), texture(texture22, TexCoord), 0.8);
-////or
-////FragColor = mix(texture(texture11, TexCoord),texture(texture22, TexCoord),0.8)*vec4(ourColor,1.0);
-//
-//// texture samplers
-//uniform sampler2D texture11;
-//uniform sampler2D texture22;
-
-		
-
-
-
-
-
-
-
-
-	

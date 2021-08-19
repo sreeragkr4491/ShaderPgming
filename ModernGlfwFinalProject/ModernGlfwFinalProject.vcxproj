@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\_OGL_LIB\SOIL_LIB\src;C:\_OGL_LIB\glfw-3.0.4.bin.WIN32\include;C:\_OGL_LIB\glew-1.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\_OGL_LIB\glm;C:\_OGL_LIB\SOIL_LIB\src;C:\_OGL_LIB\glfw-3.0.4.bin.WIN32\include;C:\_OGL_LIB\glew-1.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,6 +148,14 @@
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="MultiText.frag" />
+    <None Include="MultiText.vs" />
+    <None Include="MultiText2.frag" />
+    <None Include="MultiText2.vs" />
+    <None Include="MultiText3.frag" />
+    <None Include="MultiText3.vs" />
+    <None Include="MultiText4.frag" />
+    <None Include="MultiText4.vs" />
     <None Include="Test1.frag" />
     <None Include="Test1.vs" />
     <None Include="Test2.frag" />
@@ -173,6 +181,7 @@
     <None Include="TestText7.vs" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="awesomeface.png" />
     <Image Include="IMG_5389.JPG" />
     <Image Include="pubg-mobile-2.jpg" />
   </ItemGroup>

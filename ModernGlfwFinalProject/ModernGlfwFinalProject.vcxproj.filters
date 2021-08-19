@@ -68,12 +68,39 @@
     <None Include="TestText7.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="MultiText.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText2.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText2.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText3.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText3.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText4.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText4.frag">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="pubg-mobile-2.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="awesomeface.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

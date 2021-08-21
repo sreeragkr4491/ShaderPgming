@@ -90,7 +90,13 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="MultiText4.frag">
-      <Filter>Resource Files</Filter>
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText5.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText5.frag">
+      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

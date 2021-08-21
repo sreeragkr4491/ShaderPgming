@@ -156,6 +156,8 @@
     <None Include="MultiText3.vs" />
     <None Include="MultiText4.frag" />
     <None Include="MultiText4.vs" />
+    <None Include="MultiText5.frag" />
+    <None Include="MultiText5.vs" />
     <None Include="Test1.frag" />
     <None Include="Test1.vs" />
     <None Include="Test2.frag" />

@@ -98,6 +98,12 @@
     <None Include="MultiText5.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="MultiText6.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="MultiText6.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">

@@ -78,6 +78,30 @@
     <None Include="transform4.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="transform5.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform5.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform6.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform6.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform7.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform7.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform8.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform8.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">

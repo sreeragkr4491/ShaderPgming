@@ -173,6 +173,14 @@
     <None Include="TestText6.vs" />
     <None Include="transform4.frag" />
     <None Include="transform4.vs" />
+    <None Include="transform5.frag" />
+    <None Include="transform5.vs" />
+    <None Include="transform6.frag" />
+    <None Include="transform6.vs" />
+    <None Include="transform7.frag" />
+    <None Include="transform7.vs" />
+    <None Include="transform8.frag" />
+    <None Include="transform8.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="awesomeface.png" />

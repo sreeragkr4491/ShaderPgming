@@ -88,13 +88,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\_OGL_LIB\SOIL_LIB\src;C:\_OGL_LIB\glfw-3.0.4.bin.WIN32\include;C:\_OGL_LIB\glew-1.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\_OGL_LIB\SOIL_LIB\src;C:\_OGL_LIB\glm;C:\_OGL_LIB\glfw-3.0.4.bin.WIN32\include;C:\_OGL_LIB\glew-1.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\_OGL_LIB\SOIL_LIB\lib;C:\_OGL_LIB\glfw-3.0.4.bin.WIN32\lib-msvc120;C:\_OGL_LIB\glew-1.11.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;SOIL.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;legacy_stdio_definitions.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -148,6 +148,12 @@
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="MultiText4.frag" />
+    <None Include="MultiText4.vs" />
+    <None Include="MultiText5.frag" />
+    <None Include="MultiText5.vs" />
+    <None Include="MultiText6.frag" />
+    <None Include="MultiText6.vs" />
     <None Include="Test1.frag" />
     <None Include="Test1.vs" />
     <None Include="Test2.frag" />
@@ -157,11 +163,21 @@
     <None Include="Test4.frag" />
     <None Include="Test5.frag" />
     <None Include="Test6.frag" />
+    <None Include="TestText1.frag" />
     <None Include="TestText.frag" />
     <None Include="TestText.vs" />
+    <None Include="TestText1.vs" />
+    <None Include="TestText4.frag" />
+    <None Include="TestText4.vs" />
+    <None Include="TestText6.frag" />
+    <None Include="TestText6.vs" />
+    <None Include="transform4.frag" />
+    <None Include="transform4.vs" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="awesomeface.png" />
     <Image Include="IMG_5389.JPG" />
+    <Image Include="pubg-mobile-2.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

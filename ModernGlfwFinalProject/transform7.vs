@@ -9,8 +9,8 @@ out vec2 mytex;
 
 //uniform mat4 transform;
 
-uniform mat4 projection;
-uniform mat4 model;
+//uniform mat4 projection;
+uniform mat4 model3;
 uniform mat4 view;
 
 
@@ -19,12 +19,12 @@ void main()  // 4 must add paranthesis
 vertexcolor= colorpos;
 //gl_Position = vec4(position,1.0);
 
-gl_Position = projection*model*view*vec4(position,1.0); //original
+//gl_Position = projection*model*view*vec4(position,1.0); //original
 
 
 //34 Hw: 
 //- [1]  The present last last output of cube make it interactive, first by keys it should scale,second by key make rotation, third by keys make translation, fourth combine all with different keys
-	//gl_Position = model*vec4(position,1.0);	//1A translate 
+	gl_Position = model3*vec4(position,1.0);	//1A translate 
 	//gl_Position = projection*vec4(position,1.0); //1B Scale
 	//gl_Position = view*vec4(position,1.0); //1C Rotation
 

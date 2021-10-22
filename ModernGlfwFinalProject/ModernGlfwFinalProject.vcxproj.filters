@@ -102,6 +102,24 @@
     <None Include="transform8.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="transform9.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform9.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform10.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform10.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform11.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform11.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">

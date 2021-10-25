@@ -21,7 +21,7 @@ void main()  // 4 must add paranthesis
 vertexcolor= colorpos;
 //gl_Position = vec4(position,1.0);
 
-gl_Position = projection*model*vec4(position,1.0); //original
+gl_Position = projection*model*view*vec4(position,1.0); //original
 mytex=vec2(texcor.x, texcor.y);
 
 

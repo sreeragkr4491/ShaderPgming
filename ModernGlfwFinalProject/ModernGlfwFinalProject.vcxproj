@@ -175,6 +175,8 @@
     <None Include="transform10.vs" />
     <None Include="transform11.frag" />
     <None Include="transform11.vs" />
+    <None Include="transform12.frag" />
+    <None Include="transform12.vs" />
     <None Include="transform4.frag" />
     <None Include="transform4.vs" />
     <None Include="transform5.frag" />

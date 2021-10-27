@@ -120,6 +120,12 @@
     <None Include="transform11.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="transform12.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform12.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">

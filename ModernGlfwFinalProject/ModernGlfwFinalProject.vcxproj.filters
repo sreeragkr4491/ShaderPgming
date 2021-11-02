@@ -23,6 +23,9 @@
     <ClInclude Include="Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Shader1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Test1.frag" />
@@ -124,6 +127,30 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="transform12.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light1.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light1.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light2.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light2.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight1.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight1.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight2.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight2.frag">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

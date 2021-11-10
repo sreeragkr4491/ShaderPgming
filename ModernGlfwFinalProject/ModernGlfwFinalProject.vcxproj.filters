@@ -165,6 +165,48 @@
     <None Include="AmbLight4.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="AmbLight5.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight5.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight6.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight6.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform13.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform13.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light21.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light21.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light22.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light22.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light23.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light23.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light24.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light24.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">

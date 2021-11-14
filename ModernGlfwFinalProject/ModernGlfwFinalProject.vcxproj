@@ -163,6 +163,10 @@
     <None Include="AmbLight6.vs" />
     <None Include="Light1.frag" />
     <None Include="Light1.vs" />
+    <None Include="Light11.frag" />
+    <None Include="Light11.vs" />
+    <None Include="Light12.frag" />
+    <None Include="Light12.vs" />
     <None Include="Light2.frag" />
     <None Include="Light2.vs" />
     <None Include="Light21.frag" />
@@ -173,6 +177,8 @@
     <None Include="Light23.vs" />
     <None Include="Light24.frag" />
     <None Include="Light24.vs" />
+    <None Include="Light25.frag" />
+    <None Include="Light25.vs" />
     <None Include="MultiText4.frag" />
     <None Include="MultiText4.vs" />
     <None Include="MultiText5.frag" />

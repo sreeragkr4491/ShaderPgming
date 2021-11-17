@@ -187,6 +187,8 @@
     <None Include="Light27.vs" />
     <None Include="Light28.frag" />
     <None Include="Light28.vs" />
+    <None Include="Light29.frag" />
+    <None Include="Light29.vs" />
     <None Include="MultiText4.frag" />
     <None Include="MultiText4.vs" />
     <None Include="MultiText5.frag" />

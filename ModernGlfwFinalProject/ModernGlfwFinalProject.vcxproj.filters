@@ -249,6 +249,12 @@
     <None Include="Light13.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Light29.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light29.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">

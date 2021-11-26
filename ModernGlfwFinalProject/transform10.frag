@@ -17,7 +17,4 @@ void main()  //5 must add paranthesis
 {
 //color = texture(myTexture, mytex);
 fragText =( mix(texture(Texture11, mytex),texture(Texture22, mytex),0.4))*vec4(vertexcolor,1.0);
-
-
-
 } 

@@ -169,6 +169,8 @@
     <None Include="Light12.vs" />
     <None Include="Light13.frag" />
     <None Include="Light13.vs" />
+    <None Include="Light14.frag" />
+    <None Include="Light14.vs" />
     <None Include="Light2.frag" />
     <None Include="Light2.vs" />
     <None Include="Light21.frag" />
@@ -189,6 +191,16 @@
     <None Include="Light28.vs" />
     <None Include="Light29.frag" />
     <None Include="Light29.vs" />
+    <None Include="Light30.frag" />
+    <None Include="Light30.vs" />
+    <None Include="Light31.frag" />
+    <None Include="Light31.vs" />
+    <None Include="Light32.frag" />
+    <None Include="Light32.vs" />
+    <None Include="Light33.frag" />
+    <None Include="Light33.vs" />
+    <None Include="Light34.frag" />
+    <None Include="Light34.vs" />
     <None Include="MultiText4.frag" />
     <None Include="MultiText4.vs" />
     <None Include="MultiText5.frag" />
@@ -232,6 +244,8 @@
     <None Include="transform8.vs" />
     <None Include="transform9.frag" />
     <None Include="transform9.vs" />
+    <None Include="vcode.frag" />
+    <None Include="vcode.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="awesomeface.png" />

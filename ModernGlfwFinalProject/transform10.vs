@@ -25,7 +25,4 @@ vertexcolor= colorpos;
 
 gl_Position = projection*model*view*view1*vec4(position,1.0); //original
 mytex=vec2(texcor.x, texcor.y);
-
-
-
 } 

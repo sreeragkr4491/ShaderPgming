@@ -30,6 +30,6 @@ vec3 diffuse = diff*lgtcolor;
 vec3 result=(ambient+diffuse)*objcolor;
 
 Kr =vec4(result,1.0);
-fragText =( mix(texture(Texture11, mytex),texture(Texture22, mytex),0.4))*vec4(vertexcolor,1.0);
+//fragText =( mix(texture(Texture11, mytex),texture(Texture22, mytex),0.4))*vec4(vertexcolor,1.0);
 
 } 

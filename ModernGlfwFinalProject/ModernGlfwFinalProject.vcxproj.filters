@@ -255,6 +255,48 @@
     <None Include="Light29.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Light14.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light14.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light30.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light30.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light31.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light31.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="vcode.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="vcode.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light32.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light32.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light33.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light33.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light34.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light34.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">

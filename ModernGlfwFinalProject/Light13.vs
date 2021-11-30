@@ -12,5 +12,5 @@ uniform mat4 view2;
 void main()  // 4 must add paranthesis
 { 
 vertexcolor= colorpos;
-gl_Position = model1*vec4(position,1.0);	
+gl_Position = model1*view2*vec4(position,1.0);	
 } 

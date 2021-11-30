@@ -297,6 +297,24 @@
     <None Include="Light34.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Light35.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light35.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light36.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light36.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light37.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light37.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">

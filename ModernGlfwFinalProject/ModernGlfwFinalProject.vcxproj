@@ -201,6 +201,12 @@
     <None Include="Light33.vs" />
     <None Include="Light34.frag" />
     <None Include="Light34.vs" />
+    <None Include="Light35.frag" />
+    <None Include="Light35.vs" />
+    <None Include="Light36.frag" />
+    <None Include="Light36.vs" />
+    <None Include="Light37.frag" />
+    <None Include="Light37.vs" />
     <None Include="MultiText4.frag" />
     <None Include="MultiText4.vs" />
     <None Include="MultiText5.frag" />

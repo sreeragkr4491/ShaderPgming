@@ -785,7 +785,7 @@
 //	glfwTerminate();
 //}
 //
-//
+
 
 //lab 7 split the shader files
 
@@ -21687,42 +21687,832 @@
 
 
 
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include<GL\glew.h> 
+//#include"Shader1.h"
+//#include"SOIL2/SOIL2.h"
+//#include <glm/glm.hpp>//Graphics Lib for mathematics.
+//#include <glm/gtc/matrix_transform.hpp>
+//#include <glm/gtc/type_ptr.hpp>
+//
+//using namespace std;
+//
+////vertex shader coding part
+////fragment shader coding part
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods); //step 1: added keycall
+//
+//GLfloat rotationx = 0.0f; //step 2: for rotating in x axis
+//
+//GLfloat transx = 0; //  step 2: for translation in x axis
+//GLfloat transy = 0; //  step2: for translation in y axis
+//
+//GLfloat transx1 = 0; //  step 2: for translation in x axis
+//GLfloat transy1 = 0; //  step2: for translation in y axis
+//
+//GLfloat scalefactor = 1.0f; //step 2: for scaling
+//GLboolean scaleUp = false;
+//
+//GLfloat scalefactor1 = 1.0f; //step 2: for scaling
+//GLboolean scaleUp1 = false;
+//
+//void main()
+//{
+//	GLint wid = 2000; //*window variable
+//	GLint height1 = 1500; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw lib error" << endl;
+//	}
+//	else
+//		cout << "glfw success" << endl;
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//	glfwSetKeyCallback(window, keyCall); //step 3: gave keycallback
+//
+//	//**************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	//vertex shader 
+//
+//
+//	//fragment shader
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//	//view port
+//	glViewport(0, 0, wid, height1);
+//
+//	glEnable(GL_DEPTH_TEST);
+//
+//	//Attaching shader Files 
+//	Shader shaders1("Light13.vs", "Light13.frag");
+//
+//	Shader shaders3("Light37.vs", "Light37.frag");
+//
+//	//UPPER LIGHT
+//	GLfloat vertices[] =
+//	{
+//			// step-1 change vertices as cube and add color too
+//			-0.1f, -0.1f, -0.1f,     1.0, 1.0, 1.0,
+//			 0.1f, -0.1f, -0.1f,     1.0, 1.0, 1.0,
+//			 0.1f,  0.1f, -0.1f,     1.0, 1.0, 1.0,
+//			 0.1f,  0.1f, -0.1f,     1.0, 1.0, 1.0,
+//			-0.1f,  0.1f, -0.1f,     1.0, 1.0, 1.0,
+//			-0.1f, -0.1f, -0.1f,     1.0, 1.0, 1.0,
+//	
+//			-0.1f, -0.1f, 0.1f,      1.0, 1.0, 1.0,
+//			 0.1f, -0.1f, 0.1f,      1.0, 1.0, 1.0,
+//			 0.1f, 0.1f, 0.1f,       1.0, 1.0, 1.0,
+//			 0.1f, 0.1f, 0.1f,       1.0, 1.0, 1.0,
+//			-0.1f, 0.1f, 0.1f,       1.0, 1.0, 1.0,
+//			-0.1f, -0.1f, 0.1f,      1.0, 1.0, 1.0,
+//	
+//			-0.1f, 0.1f, 0.1f,       1.0, 1.0, 1.0,
+//			-0.1f, 0.1f, -0.1f,      1.0, 1.0, 1.0,
+//			-0.1f, -0.1f, -0.1f,     1.0, 1.0, 1.0,
+//			-0.1f, -0.1f, -0.1f,	 1.0, 1.0, 1.0,
+//			-0.1f, -0.1f, 0.1f,		 1.0, 1.0, 1.0,
+//			-0.1f, 0.1f, 0.1f,		 1.0, 1.0, 1.0,
+//	
+//			0.1f, 0.1f, 0.1f,		 1.0, 1.0, 1.0,
+//			0.1f, 0.1f, -0.1f,		 1.0, 1.0, 1.0,
+//			0.1f, -0.1f, -0.1f,		 1.0, 1.0, 1.0,
+//			0.1f, -0.1f, -0.1f,		 1.0, 1.0, 1.0,
+//			0.1f, -0.1f, 0.1f,		 1.0, 1.0, 1.0,
+//			0.1f, 0.1f, 0.1f,		 1.0, 1.0, 1.0,
+//	
+//			-0.1f, -0.1f, -0.1f,	1.0, 1.0, 1.0,
+//			0.1f, -0.1f, -0.1f,		1.0, 1.0, 1.0,
+//			0.1f, -0.1f, 0.1f,		1.0, 1.0, 1.0,
+//			0.1f, -0.1f, 0.1f,		1.0, 1.0, 1.0,
+//			-0.1f, -0.1f, 0.1f,		1.0, 1.0, 1.0,
+//			-0.1f, -0.1f, -0.1f,	1.0, 1.0, 1.0,
+//	
+//			-0.1f, 0.1f, -0.1f,		1.0, 1.0, 1.0,
+//			0.1f, 0.1f, -0.1f,		1.0, 1.0, 1.0,
+//			0.1f, 0.1f, 0.1f,		1.0, 1.0, 1.0,
+//			0.1f, 0.1f, 0.1f,		1.0, 1.0, 1.0,
+//			-0.1f, 0.1f, 0.1f,		1.0, 1.0, 1.0,
+//			-0.1f, 0.1f, -0.5f,		1.0, 1.0, 1.0,
+//			//end
+//	
+//	};
+//	
+//	//OBJECT
+//	GLfloat vertices1[] =
+//	{
+//	
+//			// step-1 change vertices as cube and add color too
+//	
+//			//top				
+//			//coordinates			color				normal				texture
+//			-0.1f, 0.1f, -0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	0.0f, 0.0f,
+//			 0.1f, 0.1f, -0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	 1.0f, 0.0f,
+//			 0.1f, 0.1f,  0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	1.0f, 1.0f,
+//			 0.1f, 0.1f,  0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	 1.0f, 1.0f,
+//			-0.1f, 0.1f,  0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	 0.0f, 1.0f,
+//			-0.1f, 0.1f, -0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	 0.0f, 0.0f,
+//	
+//			//back
+//			-0.1f, -0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 0.0f, 0.0f,
+//			 0.1f, -0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 1.0f, 0.0f,
+//			 0.1f,  0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	1.0f, 1.0f,
+//			 0.1f,  0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 1.0f, 1.0f,
+//			-0.1f,  0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 0.0f, 1.0f,
+//			-0.1f, -0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 0.0f, 0.0f,
+//	
+//			//front
+//			-0.1f, -0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	 1.0f, 0.0f,
+//			 0.1f, -0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	1.0f, 1.0f,
+//			 0.1f,  0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	 0.0f, 1.0f,
+//			 0.1f,  0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	0.0f, 1.0f,
+//			-0.1f,  0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	 0.0f, 0.0f,
+//			-0.1f, -0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	 1.0f, 0.0f,
+//	
+//			//left
+//			-0.1f,  0.1f,  0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	1.0f, 0.0f,
+//			-0.1f,  0.1f, -0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	 1.0f, 1.0f,
+//			-0.1f, -0.1f, -0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	0.0f, 1.0f,
+//			-0.1f, -0.1f, -0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	 0.0f, 1.0f,
+//			-0.1f, -0.1f,  0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	0.0f, 0.0f,
+//			-0.1f,  0.1f,  0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	1.0f, 0.0f,
+//	
+//			//right
+//			0.1f,  0.1f,  0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 0.0f, 1.0f,
+//			0.1f,  0.1f, -0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 1.0f, 1.0f,
+//			0.1f, -0.1f, -0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 1.0f, 0.0f,
+//			0.1f, -0.1f, -0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 1.0f, 0.0f,
+//			0.1f, -0.1f,  0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 0.0f, 0.0f,
+//			0.1f,  0.1f,  0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 0.0f, 1.0f,
+//	
+//			//bottom
+//			-0.1f, -0.1f, -0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	0.0f, 1.0f,
+//			 0.1f, -0.1f, -0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	1.0f, 1.0f,
+//			 0.1f, -0.1f,  0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	1.0f, 0.0f,
+//			 0.1f, -0.1f,  0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	 1.0f, 0.0f,
+//			-0.1f, -0.1f,  0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	 0.0f, 0.0f,
+//			-0.1f, -0.1f, -0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	 0.0f, 1.0f
+//	
+//	};
+//
+//	glm::vec3 objPosition[] =
+//	{
+//		glm::vec3(0.0f, 0.0f, 0.0f),
+//		glm::vec3(0.5, 0.4f, -1.0f),
+//		glm::vec3(-0.6f, -0.2f, -2.5f),
+//		glm::vec3(-0.7f, -0.7f, -12.3f),
+//		glm::vec3(1.0f, -0.4f, -3.5f),
+//		glm::vec3(-0.7f, 0.4f, -7.5f),
+//		glm::vec3(0.3f, -0.6f, -2.5f),
+//		glm::vec3(0.8f, 0.8f, -2.5f),
+//		glm::vec3(0.6f, 0.2f, -1.5f),
+//		glm::vec3(-0.3f, 0.6f, -1.5f)
+//	};
+//
+//	GLuint VBO[2], VAO[2];//vertex buffer obj//vert array obj
+//	glGenVertexArrays(2, VAO);
+//	glGenBuffers(2, VBO);
+//
+//	glBindVertexArray(VAO[0]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+//
+//	//-----------------------------------LIGHT
+//
+//	glBindVertexArray(VAO[0]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
+//	//vertices1
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//	//color
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//	////texture
+//	//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	//glEnableVertexAttribArray(2);
+//
+//
+//	////-----------------------------------OBJECT
+//
+//	glBindVertexArray(VAO[1]);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
+//	//vertices3
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//	//normal
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//	//texture
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), (GLvoid*)(9 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int diffusemap1, specularmap1;
+//	//diffuse mapping on texture
+//	glGenTextures(1, &diffusemap1);
+//	glBindTexture(GL_TEXTURE_2D, diffusemap1);
+//	if (!diffusemap1)
+//	{
+//		cout << "error" << endl;
+//	}
+//	else
+//		cout << "diffusemap1 succed" << endl;
+//	//specular map on texture
+//	glGenTextures(1, &specularmap1);
+//	glBindTexture(GL_TEXTURE_2D, specularmap1);
+//	if (!specularmap1)
+//	{
+//		cout << "error" << endl;
+//	}
+//	else
+//		cout << "specularmap1 succed";
+//
+//	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("IMG_5389.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//	glUniform1i(glGetUniformLocation(shaders3.Program, "diffusemapping"), 0);
+//	//glUniform1i(glGetUniformLocation(shaders3.Program, "mat.specular"), 1);
+//	int diffusemaplocation = glGetUniformLocation(shaders3.Program, "mat.diffuse");
+//	//int specularmaplocation = glGetUniformLocation(shaders3.Program, "specularmapping");
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0, 0, 0, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
+//
+//		//-----------------------------------
+//		//UPPER LIGHT
+//
+//		//2nd
+//		//linking the shader / calling the shader
+//		shaders1.Use();
+//
+//		//translation
+//		glm::vec3 lightposition(glm::vec3(0.8 + transx1, 0.2 + transy1, 0.0));
+//		glm::mat4 model1 = glm::mat4(1.0f);
+//		model1 = glm::translate(model1, lightposition);
+//
+//		//model3 = glm::scale(model3, glm::vec3(0.2));
+//		unsigned int translationacces1 = glGetUniformLocation(shaders1.Program, "model1");
+//		glUniformMatrix4fv(translationacces1, 1, GL_FALSE, glm::value_ptr(model1));
+//
+//		//scale
+//		glm::mat4 view2 = glm::mat4(1.0f);
+//		view2 = glm::scale(view2, glm::vec3(scalefactor, scalefactor, scalefactor));
+//		unsigned int scalenacces1 = glGetUniformLocation(shaders1.Program, "view2");
+//		glUniformMatrix4fv(scalenacces1, 1, GL_FALSE, glm::value_ptr(view2));
+//
+//		//camera position or view position or eye**********************
+//		glm::vec3 viewPos(glm::vec3(0.3 - transx1, 0.0 + transy1, 0.0));//*************
+//		glm::mat4 model4 = glm::mat4(1.0f);
+//		model4 = glm::translate(model4, viewPos);
+//		unsigned int lightacces = glGetUniformLocation(shaders1.Program, "viewPosition");//************
+//		glUniformMatrix4fv(lightacces, 1, GL_FALSE, glm::value_ptr(model4));
+//
+//		shaders1.setVec3("lightposition", lightposition);
+//
+//		//viewposition*********************
+//		shaders1.setVec3("viewPosition", viewPos);
+//
+//		//6 must pass parameter vao to see visibility of drawing 
+//		glBindVertexArray(VAO[0]);
+//		glDrawArrays(GL_TRIANGLES, 0, 36); 		//drawing	
+//	
+//
+//		// MIDDLE OBJECT
+//		//	glBindTexture(GL_TEXTURE_2D, diffusemap1);
+//		//linking the shader / calling the shader
+//		shaders3.Use();
+//		glUniform1i(glGetUniformLocation(shaders3.Program, "Texture11"), 0);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		
+//			//for color flunctation
+//			glm::vec3 lightcolorfl;
+//			lightcolorfl.r = sin(glfwGetTime() * 0.6f);
+//			lightcolorfl.g = sin(glfwGetTime() * 0.2f);
+//			lightcolorfl.b = sin(glfwGetTime() * 3.0f);
+//	
+//			glm::vec3 diffusecolor = lightcolorfl * glm::vec3(0.5);
+//			glm::vec3 ambientcolor = diffusecolor * glm::vec3(0.2);
+//	
+//			//for the light properties
+//			glUniform3f(glGetUniformLocation((shaders3.Program), "lgt.ambient"), ambientcolor.r, ambientcolor.g, ambientcolor.b);
+//			glUniform3f(glGetUniformLocation((shaders3.Program), "lgt.diffuse"), diffusecolor.r, diffusecolor.g, diffusecolor.b);
+//			glUniform3f(glGetUniformLocation((shaders3.Program), "lgt.specular"), 0.5f, 0.5f, 0.5f);
+//	
+//			//for the material properties
+//			/*glUniform3f(glGetUniformLocation((shaders3.Program), "mat.ambient"), 1.0, 0.0, 0.3);
+//			glUniform3f(glGetUniformLocation((shaders3.Program), "mat.diffuse"), 1.0, 0.0, 0.3);
+//			glUniform3f(glGetUniformLocation((shaders3.Program), "mat.specular"), 1.0, 1.0, 1.0);*/
+//
+//			
+//			//for the shininess properties
+//			glUniform1f(glGetUniformLocation((shaders3.Program), "mat.shininess"), 32.0f);
+//
+//
+//		//trabsaltion
+//		//glm::mat4 model = glm::mat4(1.0f);
+//		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
+//
+//		//view
+//		glm::mat4 view = glm::mat4(1.0f);
+//		//with sin/tan angle
+//		view = glm::translate(view, glm::vec3(0.0, 0.0, -7.0));
+//		//		//translation
+//		//		glm::mat4 model3 = glm::mat4(1.0f);
+//		//		model3 = glm::translate(model3, glm::vec3(0.0 + transx3, -0.2 + transy3, 0.0));
+//
+//		//scale
+//		glm::mat4 view1 = glm::mat4(1.0f);
+//		view1 = glm::scale(view1, glm::vec3(scalefactor1, scalefactor1, scalefactor1));
+//
+//
+//		glm::mat4 projection;
+//		projection = glm::perspective(glm::radians(40.0f), (float)wid / (float)height1, 0.1f, 100.0f);
+//		//
+//		//		//step 3 get the uniform data from the vs shader file
+//		//		//translation data fetch from shaders
+//		//		unsigned int translationacces3 = glGetUniformLocation(shaders3.Program, "model3");
+//		//		glUniformMatrix4fv(translationacces3, 1, GL_FALSE, glm::value_ptr(model3));
+//		//
+//		//		unsigned int rotateacces3 = glGetUniformLocation(shaders3.Program, "view3");
+//		//		glUniformMatrix4fv(rotateacces3, 1, GL_FALSE, glm::value_ptr(view3));
+//		//
+//		//		//6 must pass parameter vao to see visibility of drawing 
+//		//		glBindVertexArray(VAO[3]);
+//		//		glDrawArrays(GL_TRIANGLES, 0, 36);		//drawing
+//		unsigned int viewacces1 = glGetUniformLocation(shaders3.Program, "view1");
+//		glUniformMatrix4fv(viewacces1, 1, GL_FALSE, glm::value_ptr(view1));
+//
+//		//view data fetch from shaders
+//		unsigned int viewacces = glGetUniformLocation(shaders3.Program, "view");
+//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
+//
+//		//scale data fetch from shaders
+//		unsigned int scaleacces = glGetUniformLocation(shaders3.Program, "projection");
+//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
+//
+//		//must pass parameter vao to see visibility of drawing 
+//		glBindVertexArray(VAO[1]);
+//
+//		for (unsigned int i = 1; i <= 10; i++)
+//		{
+//			glm::mat4 model = glm::mat4(1.0f);
+//			model = glm::translate(model, objPosition[i]);
+//			model = glm::translate(model, glm::vec3(0.0 + transx, 0.0 + transy, 0));
+//			float angle = 18.0 * i;
+//			if (angle == 0)
+//			{
+//				angle = 40.0;
+//			}
+//			model = glm::rotate(model, glm::radians(angle) * rotationx, glm::vec3(0.0f , 0.0f, -1.0f));
+//
+//			//
+//			//		//translation
+//			//		glm::mat4 view3 = glm::mat4(1.0f);
+//			//		view3 = glm::rotate(view3, (float)glfwGetTime() * glm::radians(-55.0f), glm::vec3(1.0f, 1.0f, -1.0f));
+//
+//			unsigned int translationacces = glGetUniformLocation(shaders3.Program, "model");
+//			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//			glDrawArrays(GL_TRIANGLES, 0, 36);
+//		}
+//
+//
+//		//drawing
+//		//glDrawArrays(GL_TRIANGLES, 0, 36);
+//		//glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, VAO);
+//	glDeleteBuffers(2, VBO);
+//	glfwTerminate();
+//}
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods) //step 4: assigned keys in keycallback
+//{
+//	const GLfloat rotationSpeed = 1;
+//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//	{
+//		//scale factor conditions, boundaries for zoom in zoom out of the object
+//
+//		switch (key)
+//		{
+//		case GLFW_KEY_L:
+//			rotationx += rotationSpeed;
+//			break;
+//		case GLFW_KEY_R:
+//			rotationx -= rotationSpeed;
+//			break;
+//		}
+//
+//	}
+//
+//	const GLfloat trans = 0.1;
+//		if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//		{
+//			switch (key)
+//			{
+//	
+//			case GLFW_KEY_W:
+//				transy += trans;
+//				break;
+//	
+//			case GLFW_KEY_S:
+//				transy -= trans;
+//				break;
+//	
+//			case GLFW_KEY_A:
+//				transx -= trans;
+//				break;
+//	
+//			case GLFW_KEY_D:
+//				transx += trans;
+//				break;
+//	
+//			default:
+//				break;
+//			}
+//		}
+//
+//		
+//		if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//		{
+//			switch (key)
+//			{
+//
+//			case GLFW_KEY_8:
+//				transy1 += trans;
+//				break;
+//
+//			case GLFW_KEY_2:
+//				transy1 -= trans;
+//				break;
+//
+//			case GLFW_KEY_4:
+//				transx1 -= trans;
+//				break;
+//
+//			case GLFW_KEY_6:
+//				transx1 += trans;
+//				break;
+//
+//			default:
+//				break;
+//			}
+//		}
+//
+//
+//		if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//		{		
+//		//scale factor conditions, boundaries for zoom in zoom out of the object
+//			switch (key)
+//			{
+//				case GLFW_KEY_Z:
+//				{
+//			
+//					if (scalefactor <= 2.0)
+//					{
+//						scalefactor += 0.01;
+//					}
+//					else
+//						scaleUp = false;
+//						break;
+//				}
+//				case GLFW_KEY_X:
+//				{
+//			
+//				if (scalefactor >= 0.5)
+//					{
+//						scalefactor -= 0.01;
+//			
+//					}
+//					else
+//						scaleUp = true;
+//					break;
+//				}
+//			
+//			}
+//		}
+//
+//		if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//		{
+//			//scale factor conditions, boundaries for zoom in zoom out of the object
+//			switch (key)
+//			{
+//			case GLFW_KEY_M:
+//			{
+//
+//				if (scalefactor1 <= 2.0)
+//				{
+//					scalefactor1 += 0.01;
+//				}
+//				else
+//					scaleUp1 = false;
+//				break;
+//			}
+//			case GLFW_KEY_N:
+//			{
+//
+//				if (scalefactor1 >= 0.5)
+//				{
+//					scalefactor1 -= 0.01;
+//
+//				}
+//				else
+//					scaleUp1 = true;
+//				break;
+//			}
+//
+//			}
+//		}
+//
+//}
+
+
+//How to draw circle in 2D
+
+
+//
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//
+//using namespace std;
+//
+////for circle
+//const float numsteps = 100;
+//const float angle = (3.14159 * 2) / numsteps;
+//
+//
+//void main()
+//{
+//	GLint wid = 800; //*window variable
+//	GLint height = 800; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	window = glfwCreateWindow(wid, height, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0.1, 1, 1, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
+//		
+//		//for circle
+//		float xpos = 0; float ypos = 0; float radius = 0.8f;
+//
+//		//for circle
+//		float prevx = xpos;
+//		float prevy = ypos - radius;
+//		for (int i = 0; i <= numsteps; i++)
+//		{
+//			float newx = radius * sin(angle * i);
+//			float newy = -radius * cos(angle * i);
+//			glBegin(GL_TRIANGLES);
+//			glColor3f(1.0, 0, 0);
+//			glVertex3f(0, 0, 0);
+//			glVertex3f(prevx, prevy, 0);
+//			glVertex3f(newx, newy, 0);
+//			glEnd();
+//			prevx = newx;
+//			prevy = newy;
+//
+//		}
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glfwTerminate();
+//}
+
+
+
+
+//Skybox
+
+
+//
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include<GL\glew.h> 
+//#include"Shader.h"
+//#include"SOIL2/SOIL2.h"
+//#include <glm/glm.hpp>
+//#include <glm/gtc/matrix_transform.hpp>
+//#include <glm/gtc/type_ptr.hpp>
+//
+//using namespace std;
+//
+//void main()
+//{
+//	GLint wid = 2000;
+//	GLint height1 = 1500;
+//	GLFWwindow* window; 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw lib error" << endl;
+//	}
+//	else
+//		cout << "glfw success" << endl;
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); 
+//
+//	
+//	glfwMakeContextCurrent(window);
+//
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//
+//	glViewport(0, 0, wid, height1);
+//	glEnable(GL_DEPTH_TEST);
+//	Shader shaders("skybox.vs", "skybox.frag");
+//
+//	
+//
+//	GLfloat vertices[] =
+//	{
+//		-0.1f, -0.1f, -0.1f, 
+//		 0.1f, -0.1f, -0.1f,
+//		 0.1f,  0.1f, -0.1f, 
+//		 0.1f,  0.1f, -0.1f, 
+//		-0.1f,  0.1f, -0.1f, 
+//		-0.1f, -0.1f, -0.1f, 
+//
+//		-0.1f, -0.1f, 0.1f, 
+//		 0.1f, -0.1f, 0.1f, 
+//		 0.1f,  0.1f, 0.1f, 
+//		 0.1f,  0.1f, 0.1f, 
+//		-0.1f,  0.1f, 0.1f, 
+//		-0.1f, -0.1f, 0.1f, 
+//
+//		-0.1f,  0.1f,  0.1f, 
+//		-0.1f,  0.1f, -0.1f, 
+//		-0.1f, -0.1f, -0.1f, 
+//		-0.1f, -0.1f, -0.1f, 
+//		-0.1f, -0.1f,  0.1f, 
+//		-0.1f,  0.1f,  0.1f, 
+//
+//		0.1f,  0.1f,  0.1f,
+//		0.1f,  0.1f, -0.1f, 
+//		0.1f, -0.1f, -0.1f, 
+//		0.1f, -0.1f, -0.1f, 
+//		0.1f, -0.1f,  0.1f, 
+//		0.1f,  0.1f,  0.1f, 
+//
+//		-0.1f, -0.1f, -0.1f, 
+//		 0.1f, -0.1f, -0.1f,
+//		 0.1f, -0.1f,  0.1f,
+//		 0.1f, -0.1f,  0.1f, 
+//		-0.1f, -0.1f,  0.1f, 
+//		-0.1f, -0.1f, -0.1f, 
+//
+//		-0.1f, 0.1f, -0.1f, 
+//		 0.1f, 0.1f, -0.1f, 
+//		 0.1f, 0.1f,  0.1f, 
+//		 0.1f, 0.1f,  0.1f, 
+//		-0.1f, 0.1f,  0.1f, 
+//		-0.1f, 0.1f, -0.1f
+//	};
+//
+//	GLuint VBO, VAO;
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		
+//		glClearColor(0, 0, 0, 0); 
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//
+//		glm::mat4 model = glm::mat4(1.0f);
+//		model = glm::translate(model, glm::vec3(0.0, -0.3, -3.0));
+//		unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//		glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//
+//		
+//		glm::mat4 view = glm::mat4(1.0f);
+//		view = glm::rotate(view, (float)glfwGetTime() * glm::radians(-55.0f), glm::vec3(-1.0f, 1.0f, -1.0f));
+//		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
+//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
+//
+//		glm::mat4 projection;
+//		projection = glm::perspective(glm::radians(45.0f), (float)wid / (float)height1, 0.1f, 100.0f);
+//		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
+//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
+//
+//		glBindVertexArray(VAO);
+//		glDrawArrays(GL_TRIANGLES, 0, 36);
+//	
+//		glfwSwapBuffers(window);
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+
+
+
+
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
 #include<iostream>
 #include<GL\glew.h> 
 #include"Shader1.h"
 #include"SOIL2/SOIL2.h"
-#include <glm/glm.hpp>//Graphics Lib for mathematics.
+#include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 using namespace std;
 
-//vertex shader coding part
-//fragment shader coding part
+void MouseCallback(GLFWwindow* window, double xPos, double yPos);
 
-void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods); //step 1: added keycall
+GLint wid = 2000; //*window variable
+GLint height1 = 1500; //*window variable
+GLFWwindow* window; //pointer var as window that will hold address only 
 
-GLfloat rotationx = 0.0f; //step 2: for rotating in x axis
+//camera
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
-GLfloat transx = 0; //  step 2: for translation in x axis
-GLfloat transy = 0; //  step2: for translation in y axis
-
-GLfloat transx1 = 0; //  step 2: for translation in x axis
-GLfloat transy1 = 0; //  step2: for translation in y axis
-
-GLfloat scalefactor = 1.0f; //step 2: for scaling
-GLboolean scaleUp = false;
-
-GLfloat scalefactor1 = 1.0f; //step 2: for scaling
-GLboolean scaleUp1 = false;
+ //timing
+float deltaTime = 0.0f;	// time between current frame and last frame
+float lastFrame = 0.0f;
+// s-1 mouse var def
+GLfloat yaw = -90.0f;
+GLfloat pitch = 0.0f;
+GLfloat fov = 45.0f;
+GLfloat lastX = wid / 2.0;
+GLfloat lastY = height1 / 2.0;
+//bool keys[1024];
+bool firstMouse = true;
 
 void main()
 {
-	GLint wid = 2000; //*window variable
-	GLint height1 = 1500; //*window variable
-	GLFWwindow* window; //pointer var as window that will hold address only 
+	
 	glfwInit();
 
 	if (!glfwInit())
@@ -21731,13 +22521,13 @@ void main()
 	}
 	else
 		cout << "glfw success" << endl;
-	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL);
 
-	// make the window context current
+
 	glfwMakeContextCurrent(window);
-	glfwSetKeyCallback(window, keyCall); //step 3: gave keycallback
+	glfwSetCursorPosCallback(window, MouseCallback);
+	glfwSetInputMode(window, GLFW_CURSOR,GLFW_CURSOR_DISABLED);
 
-	//**************** here must add glew function use*********
 	if (glewInit() != GLEW_OK)
 	{
 		cout << "fail to open glew\n";
@@ -21745,525 +22535,559 @@ void main()
 	}
 	else
 		cout << "glew works success\n";
-	// till here glew stuff
 
-
-	//vertex shader 
-
-
-	//fragment shader
-
-
-	//Shader linking of vertex and fragment shader
-
-	//view port
 	glViewport(0, 0, wid, height1);
-
 	glEnable(GL_DEPTH_TEST);
+	Shader shaders("skybox.vs", "skybox.frag");
 
-	//Attaching shader Files 
-	Shader shaders1("Light13.vs", "Light13.frag");
 
-	Shader shaders3("Light37.vs", "Light37.frag");
 
-	//UPPER LIGHT
 	GLfloat vertices[] =
 	{
-			// step-1 change vertices as cube and add color too
-			-0.1f, -0.1f, -0.1f,     1.0, 1.0, 1.0,
-			 0.1f, -0.1f, -0.1f,     1.0, 1.0, 1.0,
-			 0.1f,  0.1f, -0.1f,     1.0, 1.0, 1.0,
-			 0.1f,  0.1f, -0.1f,     1.0, 1.0, 1.0,
-			-0.1f,  0.1f, -0.1f,     1.0, 1.0, 1.0,
-			-0.1f, -0.1f, -0.1f,     1.0, 1.0, 1.0,
-	
-			-0.1f, -0.1f, 0.1f,      1.0, 1.0, 1.0,
-			 0.1f, -0.1f, 0.1f,      1.0, 1.0, 1.0,
-			 0.1f, 0.1f, 0.1f,       1.0, 1.0, 1.0,
-			 0.1f, 0.1f, 0.1f,       1.0, 1.0, 1.0,
-			-0.1f, 0.1f, 0.1f,       1.0, 1.0, 1.0,
-			-0.1f, -0.1f, 0.1f,      1.0, 1.0, 1.0,
-	
-			-0.1f, 0.1f, 0.1f,       1.0, 1.0, 1.0,
-			-0.1f, 0.1f, -0.1f,      1.0, 1.0, 1.0,
-			-0.1f, -0.1f, -0.1f,     1.0, 1.0, 1.0,
-			-0.1f, -0.1f, -0.1f,	 1.0, 1.0, 1.0,
-			-0.1f, -0.1f, 0.1f,		 1.0, 1.0, 1.0,
-			-0.1f, 0.1f, 0.1f,		 1.0, 1.0, 1.0,
-	
-			0.1f, 0.1f, 0.1f,		 1.0, 1.0, 1.0,
-			0.1f, 0.1f, -0.1f,		 1.0, 1.0, 1.0,
-			0.1f, -0.1f, -0.1f,		 1.0, 1.0, 1.0,
-			0.1f, -0.1f, -0.1f,		 1.0, 1.0, 1.0,
-			0.1f, -0.1f, 0.1f,		 1.0, 1.0, 1.0,
-			0.1f, 0.1f, 0.1f,		 1.0, 1.0, 1.0,
-	
-			-0.1f, -0.1f, -0.1f,	1.0, 1.0, 1.0,
-			0.1f, -0.1f, -0.1f,		1.0, 1.0, 1.0,
-			0.1f, -0.1f, 0.1f,		1.0, 1.0, 1.0,
-			0.1f, -0.1f, 0.1f,		1.0, 1.0, 1.0,
-			-0.1f, -0.1f, 0.1f,		1.0, 1.0, 1.0,
-			-0.1f, -0.1f, -0.1f,	1.0, 1.0, 1.0,
-	
-			-0.1f, 0.1f, -0.1f,		1.0, 1.0, 1.0,
-			0.1f, 0.1f, -0.1f,		1.0, 1.0, 1.0,
-			0.1f, 0.1f, 0.1f,		1.0, 1.0, 1.0,
-			0.1f, 0.1f, 0.1f,		1.0, 1.0, 1.0,
-			-0.1f, 0.1f, 0.1f,		1.0, 1.0, 1.0,
-			-0.1f, 0.1f, -0.5f,		1.0, 1.0, 1.0,
-			//end
-	
-	};
-	
-	//OBJECT
-	GLfloat vertices1[] =
-	{
-	
-			// step-1 change vertices as cube and add color too
-	
-			//top				
-			//coordinates			color				normal				texture
-			-0.1f, 0.1f, -0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	0.0f, 0.0f,
-			 0.1f, 0.1f, -0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	 1.0f, 0.0f,
-			 0.1f, 0.1f,  0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	1.0f, 1.0f,
-			 0.1f, 0.1f,  0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	 1.0f, 1.0f,
-			-0.1f, 0.1f,  0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	 0.0f, 1.0f,
-			-0.1f, 0.1f, -0.1f,		1.0, 1.0, 0.0,		0.0f, 1.0f, 0.0f,	 0.0f, 0.0f,
-	
-			//back
-			-0.1f, -0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 0.0f, 0.0f,
-			 0.1f, -0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 1.0f, 0.0f,
-			 0.1f,  0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	1.0f, 1.0f,
-			 0.1f,  0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 1.0f, 1.0f,
-			-0.1f,  0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 0.0f, 1.0f,
-			-0.1f, -0.1f, -0.1f,	1.0, 0.0, 0.0,		0.0f, 0.0f, -1.0f,	 0.0f, 0.0f,
-	
-			//front
-			-0.1f, -0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	 1.0f, 0.0f,
-			 0.1f, -0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	1.0f, 1.0f,
-			 0.1f,  0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	 0.0f, 1.0f,
-			 0.1f,  0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	0.0f, 1.0f,
-			-0.1f,  0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	 0.0f, 0.0f,
-			-0.1f, -0.1f, 0.1f,		0.0, 1.0, 0.0,		0.0f, 0.0f, 1.0f,	 1.0f, 0.0f,
-	
-			//left
-			-0.1f,  0.1f,  0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	1.0f, 0.0f,
-			-0.1f,  0.1f, -0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	 1.0f, 1.0f,
-			-0.1f, -0.1f, -0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	0.0f, 1.0f,
-			-0.1f, -0.1f, -0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	 0.0f, 1.0f,
-			-0.1f, -0.1f,  0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	0.0f, 0.0f,
-			-0.1f,  0.1f,  0.1f,	0.0, 0.0, 1.0,		-1.0f, 0.0f, 0.0f,	1.0f, 0.0f,
-	
-			//right
-			0.1f,  0.1f,  0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 0.0f, 1.0f,
-			0.1f,  0.1f, -0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 1.0f, 1.0f,
-			0.1f, -0.1f, -0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 1.0f, 0.0f,
-			0.1f, -0.1f, -0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 1.0f, 0.0f,
-			0.1f, -0.1f,  0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 0.0f, 0.0f,
-			0.1f,  0.1f,  0.1f,		0.0, 1.0, 1.0,		1.0f, 0.0f, 0.0f,	 0.0f, 1.0f,
-	
-			//bottom
-			-0.1f, -0.1f, -0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	0.0f, 1.0f,
-			 0.1f, -0.1f, -0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	1.0f, 1.0f,
-			 0.1f, -0.1f,  0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	1.0f, 0.0f,
-			 0.1f, -0.1f,  0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	 1.0f, 0.0f,
-			-0.1f, -0.1f,  0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	 0.0f, 0.0f,
-			-0.1f, -0.1f, -0.1f,	1.0, 0.0, 1.0,		0.0f, -1.0f, 0.0f,	 0.0f, 1.0f
-	
+		-0.1f, -0.1f, -0.1f,
+		 0.1f, -0.1f, -0.1f,
+		 0.1f,  0.1f, -0.1f,
+		 0.1f,  0.1f, -0.1f,
+		-0.1f,  0.1f, -0.1f,
+		-0.1f, -0.1f, -0.1f,
+
+		-0.1f, -0.1f, 0.1f,
+		 0.1f, -0.1f, 0.1f,
+		 0.1f,  0.1f, 0.1f,
+		 0.1f,  0.1f, 0.1f,
+		-0.1f,  0.1f, 0.1f,
+		-0.1f, -0.1f, 0.1f,
+
+		-0.1f,  0.1f,  0.1f,
+		-0.1f,  0.1f, -0.1f,
+		-0.1f, -0.1f, -0.1f,
+		-0.1f, -0.1f, -0.1f,
+		-0.1f, -0.1f,  0.1f,
+		-0.1f,  0.1f,  0.1f,
+
+		0.1f,  0.1f,  0.1f,
+		0.1f,  0.1f, -0.1f,
+		0.1f, -0.1f, -0.1f,
+		0.1f, -0.1f, -0.1f,
+		0.1f, -0.1f,  0.1f,
+		0.1f,  0.1f,  0.1f,
+
+		-0.1f, -0.1f, -0.1f,
+		 0.1f, -0.1f, -0.1f,
+		 0.1f, -0.1f,  0.1f,
+		 0.1f, -0.1f,  0.1f,
+		-0.1f, -0.1f,  0.1f,
+		-0.1f, -0.1f, -0.1f,
+
+		-0.1f, 0.1f, -0.1f,
+		 0.1f, 0.1f, -0.1f,
+		 0.1f, 0.1f,  0.1f,
+		 0.1f, 0.1f,  0.1f,
+		-0.1f, 0.1f,  0.1f,
+		-0.1f, 0.1f, -0.1f
 	};
 
-	glm::vec3 objPosition[] =
-	{
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(0.5, 0.4f, -1.0f),
-		glm::vec3(-0.6f, -0.2f, -2.5f),
-		glm::vec3(-0.7f, -0.7f, -12.3f),
-		glm::vec3(1.0f, -0.4f, -3.5f),
-		glm::vec3(-0.7f, 0.4f, -7.5f),
-		glm::vec3(0.3f, -0.6f, -2.5f),
-		glm::vec3(0.8f, 0.8f, -2.5f),
-		glm::vec3(0.6f, 0.2f, -1.5f),
-		glm::vec3(-0.3f, 0.6f, -1.5f)
-	};
+	GLuint VBO, VAO;
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-	GLuint VBO[2], VAO[2];//vertex buffer obj//vert array obj
-	glGenVertexArrays(2, VAO);
-	glGenBuffers(2, VBO);
-
-	glBindVertexArray(VAO[0]);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
-
-	//-----------------------------------LIGHT
-
-	glBindVertexArray(VAO[0]);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
-	//vertices1
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
-	//color
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(1);
-	////texture
-	//glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
-	//glEnableVertexAttribArray(2);
-
-
-	////-----------------------------------OBJECT
-
-	glBindVertexArray(VAO[1]);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO[1]);
-	//vertices3
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), (GLvoid*)0);
-	glEnableVertexAttribArray(0);
-	//normal
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(1);
-	//texture
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 11 * sizeof(GLfloat), (GLvoid*)(9 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(2);
-
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
-	unsigned int diffusemap1, specularmap1;
-	//diffuse mapping on texture
-	glGenTextures(1, &diffusemap1);
-	glBindTexture(GL_TEXTURE_2D, diffusemap1);
-	if (!diffusemap1)
-	{
-		cout << "error" << endl;
-	}
-	else
-		cout << "diffusemap1 succed" << endl;
-	//specular map on texture
-	glGenTextures(1, &specularmap1);
-	glBindTexture(GL_TEXTURE_2D, specularmap1);
-	if (!specularmap1)
-	{
-		cout << "error" << endl;
-	}
-	else
-		cout << "specularmap1 succed";
 
-	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
-	unsigned int texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	//texturing
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	int width, height, nrChannels;
-	unsigned char* image = SOIL_load_image("IMG_5389.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	SOIL_free_image_data(image);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	glUniform1i(glGetUniformLocation(shaders3.Program, "diffusemapping"), 0);
-	//glUniform1i(glGetUniformLocation(shaders3.Program, "mat.specular"), 1);
-	int diffusemaplocation = glGetUniformLocation(shaders3.Program, "mat.diffuse");
-	//int specularmaplocation = glGetUniformLocation(shaders3.Program, "specularmapping");
-
-	//gameloop
 	while (!glfwWindowShouldClose(window))
 	{
-		//for the bg color
-		glClearColor(0, 0, 0, 0); //for rgb color change
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
 
-		//-----------------------------------
-		//UPPER LIGHT
+		glClearColor(0, 0, 0, 0);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//2nd
-		//linking the shader / calling the shader
-		shaders1.Use();
-
-		//translation
-		glm::vec3 lightposition(glm::vec3(0.8 + transx1, 0.2 + transy1, 0.0));
-		glm::mat4 model1 = glm::mat4(1.0f);
-		model1 = glm::translate(model1, lightposition);
-
-		//model3 = glm::scale(model3, glm::vec3(0.2));
-		unsigned int translationacces1 = glGetUniformLocation(shaders1.Program, "model1");
-		glUniformMatrix4fv(translationacces1, 1, GL_FALSE, glm::value_ptr(model1));
-
-		//scale
-		glm::mat4 view2 = glm::mat4(1.0f);
-		view2 = glm::scale(view2, glm::vec3(scalefactor, scalefactor, scalefactor));
-		unsigned int scalenacces1 = glGetUniformLocation(shaders1.Program, "view2");
-		glUniformMatrix4fv(scalenacces1, 1, GL_FALSE, glm::value_ptr(view2));
-
-		//camera position or view position or eye**********************
-		glm::vec3 viewPos(glm::vec3(0.3 - transx1, 0.0 + transy1, 0.0));//*************
-		glm::mat4 model4 = glm::mat4(1.0f);
-		model4 = glm::translate(model4, viewPos);
-		unsigned int lightacces = glGetUniformLocation(shaders1.Program, "viewPosition");//************
-		glUniformMatrix4fv(lightacces, 1, GL_FALSE, glm::value_ptr(model4));
-
-		shaders1.setVec3("lightposition", lightposition);
-
-		//viewposition*********************
-		shaders1.setVec3("viewPosition", viewPos);
-
-		//6 must pass parameter vao to see visibility of drawing 
-		glBindVertexArray(VAO[0]);
-		glDrawArrays(GL_TRIANGLES, 0, 36); 		//drawing	
-	
-
-		// MIDDLE OBJECT
-		//	glBindTexture(GL_TEXTURE_2D, diffusemap1);
-		//linking the shader / calling the shader
-		shaders3.Use();
-		glUniform1i(glGetUniformLocation(shaders3.Program, "Texture11"), 0);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture);
-		
-			//for color flunctation
-			glm::vec3 lightcolorfl;
-			lightcolorfl.r = sin(glfwGetTime() * 0.6f);
-			lightcolorfl.g = sin(glfwGetTime() * 0.2f);
-			lightcolorfl.b = sin(glfwGetTime() * 3.0f);
-	
-			glm::vec3 diffusecolor = lightcolorfl * glm::vec3(0.5);
-			glm::vec3 ambientcolor = diffusecolor * glm::vec3(0.2);
-	
-			//for the light properties
-			glUniform3f(glGetUniformLocation((shaders3.Program), "lgt.ambient"), ambientcolor.r, ambientcolor.g, ambientcolor.b);
-			glUniform3f(glGetUniformLocation((shaders3.Program), "lgt.diffuse"), diffusecolor.r, diffusecolor.g, diffusecolor.b);
-			glUniform3f(glGetUniformLocation((shaders3.Program), "lgt.specular"), 0.5f, 0.5f, 0.5f);
-	
-			//for the material properties
-			/*glUniform3f(glGetUniformLocation((shaders3.Program), "mat.ambient"), 1.0, 0.0, 0.3);
-			glUniform3f(glGetUniformLocation((shaders3.Program), "mat.diffuse"), 1.0, 0.0, 0.3);
-			glUniform3f(glGetUniformLocation((shaders3.Program), "mat.specular"), 1.0, 1.0, 1.0);*/
-
-			
-			//for the shininess properties
-			glUniform1f(glGetUniformLocation((shaders3.Program), "mat.shininess"), 32.0f);
-
-
-		//trabsaltion
-		//glm::mat4 model = glm::mat4(1.0f);
-		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
+		glm::mat4 model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.0, -0.3, -3.0));
+		unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+		glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
 
 		//view
-		glm::mat4 view = glm::mat4(1.0f);
-		//with sin/tan angle
-		view = glm::translate(view, glm::vec3(0.0, 0.0, -7.0));
-		//		//translation
-		//		glm::mat4 model3 = glm::mat4(1.0f);
-		//		model3 = glm::translate(model3, glm::vec3(0.0 + transx3, -0.2 + transy3, 0.0));
-
-		//scale
 		glm::mat4 view1 = glm::mat4(1.0f);
-		view1 = glm::scale(view1, glm::vec3(scalefactor1, scalefactor1, scalefactor1));
+		//with sin/tan angle
+		view1 = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+		shaders.setMat4("view1", view1);
 
-
-		glm::mat4 projection;
-		projection = glm::perspective(glm::radians(40.0f), (float)wid / (float)height1, 0.1f, 100.0f);
-		//
-		//		//step 3 get the uniform data from the vs shader file
-		//		//translation data fetch from shaders
-		//		unsigned int translationacces3 = glGetUniformLocation(shaders3.Program, "model3");
-		//		glUniformMatrix4fv(translationacces3, 1, GL_FALSE, glm::value_ptr(model3));
-		//
-		//		unsigned int rotateacces3 = glGetUniformLocation(shaders3.Program, "view3");
-		//		glUniformMatrix4fv(rotateacces3, 1, GL_FALSE, glm::value_ptr(view3));
-		//
-		//		//6 must pass parameter vao to see visibility of drawing 
-		//		glBindVertexArray(VAO[3]);
-		//		glDrawArrays(GL_TRIANGLES, 0, 36);		//drawing
-		unsigned int viewacces1 = glGetUniformLocation(shaders3.Program, "view1");
-		glUniformMatrix4fv(viewacces1, 1, GL_FALSE, glm::value_ptr(view1));
-
-		//view data fetch from shaders
-		unsigned int viewacces = glGetUniformLocation(shaders3.Program, "view");
+		glm::mat4 view = glm::mat4(1.0f);
+		view = glm::rotate(view, (float)glfwGetTime() * glm::radians(-55.0f), glm::vec3(-1.0f, 1.0f, -1.0f));
+		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
 		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
 
-		//scale data fetch from shaders
-		unsigned int scaleacces = glGetUniformLocation(shaders3.Program, "projection");
+		glm::mat4 projection;
+		projection = glm::perspective(glm::radians(45.0f), (float)wid / (float)height1, 0.1f, 100.0f);
+		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
 		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
 
-		//must pass parameter vao to see visibility of drawing 
-		glBindVertexArray(VAO[1]);
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		for (unsigned int i = 1; i <= 10; i++)
-		{
-			glm::mat4 model = glm::mat4(1.0f);
-			model = glm::translate(model, objPosition[i]);
-			model = glm::translate(model, glm::vec3(0.0 + transx, 0.0 + transy, 0));
-			float angle = 18.0 * i;
-			if (angle == 0)
-			{
-				angle = 40.0;
-			}
-			model = glm::rotate(model, glm::radians(angle) * rotationx, glm::vec3(0.0f , 0.0f, -1.0f));
-
-			//
-			//		//translation
-			//		glm::mat4 view3 = glm::mat4(1.0f);
-			//		view3 = glm::rotate(view3, (float)glfwGetTime() * glm::radians(-55.0f), glm::vec3(1.0f, 1.0f, -1.0f));
-
-			unsigned int translationacces = glGetUniformLocation(shaders3.Program, "model");
-			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-		}
-
-
-		//drawing
-		//glDrawArrays(GL_TRIANGLES, 0, 36);
-		//glBindVertexArray();
-
-		glfwSwapBuffers(window);//to swap the new color for window
+		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-	glDeleteVertexArrays(1, VAO);
-	glDeleteBuffers(2, VBO);
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
 	glfwTerminate();
 }
 
-void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods) //step 4: assigned keys in keycallback
+void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 {
-	const GLfloat rotationSpeed = 1;
-	if (action == GLFW_PRESS || action == GLFW_REPEAT)
+	if (firstMouse)
 	{
-		//scale factor conditions, boundaries for zoom in zoom out of the object
-
-		switch (key)
-		{
-		case GLFW_KEY_L:
-			rotationx += rotationSpeed;
-			break;
-		case GLFW_KEY_R:
-			rotationx -= rotationSpeed;
-			break;
-		}
-
+		lastX = xPos;
+		lastY = yPos;
+		firstMouse = false;
 	}
 
-	const GLfloat trans = 0.1;
-		if (action == GLFW_PRESS || action == GLFW_REPEAT)
-		{
-			switch (key)
-			{
-	
-			case GLFW_KEY_W:
-				transy += trans;
-				break;
-	
-			case GLFW_KEY_S:
-				transy -= trans;
-				break;
-	
-			case GLFW_KEY_A:
-				transx -= trans;
-				break;
-	
-			case GLFW_KEY_D:
-				transx += trans;
-				break;
-	
-			default:
-				break;
-			}
-		}
+	GLfloat xOffset = xPos - lastX;
+	GLfloat yOffset = lastY - yPos;  // Reversed since y-coordinates go from bottom to left
 
-		
-		if (action == GLFW_PRESS || action == GLFW_REPEAT)
-		{
-			switch (key)
-			{
+	lastX = xPos;
+	lastY = yPos;
 
-			case GLFW_KEY_8:
-				transy1 += trans;
-				break;
+	float sensitivity = 0.05;
+	xOffset *= sensitivity;
+	yOffset *= sensitivity;
 
-			case GLFW_KEY_2:
-				transy1 -= trans;
-				break;
+	yaw += xOffset;
+	pitch += yOffset;
 
-			case GLFW_KEY_4:
-				transx1 -= trans;
-				break;
+	if (pitch > 89.0f)
+		pitch = 89.0f;
+	if (pitch < -89.0f)
+		pitch = -89.0f;
 
-			case GLFW_KEY_6:
-				transx1 += trans;
-				break;
-
-			default:
-				break;
-			}
-		}
-
-
-		if (action == GLFW_PRESS || action == GLFW_REPEAT)
-		{		
-		//scale factor conditions, boundaries for zoom in zoom out of the object
-			switch (key)
-			{
-				case GLFW_KEY_Z:
-				{
-			
-					if (scalefactor <= 2.0)
-					{
-						scalefactor += 0.01;
-					}
-					else
-						scaleUp = false;
-						break;
-				}
-				case GLFW_KEY_X:
-				{
-			
-				if (scalefactor >= 0.5)
-					{
-						scalefactor -= 0.01;
-			
-					}
-					else
-						scaleUp = true;
-					break;
-				}
-			
-			}
-		}
-
-		if (action == GLFW_PRESS || action == GLFW_REPEAT)
-		{
-			//scale factor conditions, boundaries for zoom in zoom out of the object
-			switch (key)
-			{
-			case GLFW_KEY_M:
-			{
-
-				if (scalefactor1 <= 2.0)
-				{
-					scalefactor1 += 0.01;
-				}
-				else
-					scaleUp1 = false;
-				break;
-			}
-			case GLFW_KEY_N:
-			{
-
-				if (scalefactor1 >= 0.5)
-				{
-					scalefactor1 -= 0.01;
-
-				}
-				else
-					scaleUp1 = true;
-				break;
-			}
-
-			}
-		}
+	glm::vec3 front;
+	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	front.y = sin(glm::radians(pitch));
+	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cameraFront = glm::normalize(front);
 
 }
+
+
+
+
+//
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include<GL\glew.h> 
+//#include"Shader1.h"
+//#include"SOIL2/SOIL2.h"
+//#include <glm/glm.hpp>//Graphics Lib for mathematics.
+//#include <glm/gtc/matrix_transform.hpp>
+//#include <glm/gtc/type_ptr.hpp>
+//
+//using namespace std;
+//
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods); //step 1: added keycall
+//// s-2 mouse decl part
+//void ScrollCallback(GLFWwindow* window, double xOffset, double yOffset);
+//void MouseCallback(GLFWwindow* window, double xPos, double yPos);
+//
+//GLint wid = 2000; //*window variable
+//GLint height1 = 1500; //*window variable
+//GLFWwindow* window; //pointer var as window that will hold address only 
+//
+//
+// //camera
+//glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+//glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+//glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+//
+// //timing
+//float deltaTime = 0.0f;	// time between current frame and last frame
+//float lastFrame = 0.0f;
+//// s-1 mouse var def
+//GLfloat yaw = -90.0f;
+//GLfloat pitch = 0.0f;
+//GLfloat fov = 45.0f;
+//GLfloat lastX = wid / 2.0;
+//GLfloat lastY = height1 / 2.0;
+////bool keys[1024];
+//bool firstMouse = true;
+//
+//
+//GLfloat rotationx = 0.0f; //step 2: for rotating in x axis
+//
+//GLfloat transx = 0; //  step 2: for translation in x axis
+//GLfloat transy = 0; //  step2: for translation in y axis
+//
+//GLfloat scalefactor = 1.0f; //step 2: for scaling
+//GLboolean scaleUp = false;
+//
+//void main()
+//{
+//	
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw lib error" << endl;
+//	}
+//	else
+//		cout << "glfw success" << endl;
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//	glfwSetKeyCallback(window, keyCall); //step 3: gave keycallback
+//	glfwSetCursorPosCallback(window, MouseCallback);
+//	glfwSetScrollCallback(window, ScrollCallback);
+//	glfwSetInputMode(window, GLFW_CURSOR,GLFW_CURSOR_DISABLED);
+//
+//	//**************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//
+//
+//	//view port
+//	glViewport(0, 0, wid, height1);
+//
+//	glEnable(GL_DEPTH_TEST);
+//
+//	//Attaching shader Files 
+//	Shader shaders("transform10.vs", "transform10.frag");
+//
+//
+//
+//	GLfloat vertices[] =
+//	{
+//		//change vertices as cube and add color too
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//		 0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 0.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		-0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 0.0, 0.0, 1.0, 1.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, -0.5f, 0.0, 1.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 1.0, 0.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f,
+//		0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f
+//		//end
+//
+//
+//	};
+//
+//	glm::vec3 objPosition[] =
+//	{
+//		glm::vec3(0.0f, 0.0f, 0.0f),
+//		glm::vec3(2.0f, 5.0f, -15.0f),
+//		glm::vec3(-1.5f, -2.2f, -2.5f),
+//		glm::vec3(-3.8f, -2.0f, -12.3f),
+//		glm::vec3(2.4f, -0.4f, -3.5f),
+//		glm::vec3(-1.7f, 3.0f, -7.5f),
+//		glm::vec3(1.3f, -2.0f, -2.5f),
+//		glm::vec3(1.5f, 2.0f, -2.5f),
+//		glm::vec3(1.5f, 0.2f, -1.5f),
+//		glm::vec3(-1.3f, 1.0f, -1.5f)
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//
+//	//vertices
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//	//color
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//
+//	//texture
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("image1.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//texture-2 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture1;
+//	glGenTextures(1, &texture1);
+//	glBindTexture(GL_TEXTURE_2D, texture1);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	//int width, height, nrChannels;
+//	unsigned char* image1 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image1);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image1);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0, 0, 0, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		shaders.Use();
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture11"), 0);
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture22"), 1);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture1);
+//
+//		//trabsaltion
+//		//glm::mat4 model = glm::mat4(1.0f);
+//		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
+//
+//		//view
+//		glm::mat4 view = glm::mat4(1.0f);
+//		//with sin/tan angle
+//		view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+//		shaders.setMat4("view", view);
+//
+//		//scale
+//		glm::mat4 view1 = glm::mat4(1.0f);
+//		view1 = glm::scale(view1, glm::vec3(scalefactor, scalefactor, scalefactor));
+//
+//
+//		glm::mat4 projection;
+//		projection = glm::perspective(glm::radians(100.0f), (float)wid / (float)height1, 0.1f, 100.0f);
+//
+//		unsigned int viewacces1 = glGetUniformLocation(shaders.Program, "view1");
+//		glUniformMatrix4fv(viewacces1, 1, GL_FALSE, glm::value_ptr(view1));
+//
+//		//view data fetch from shaders
+//		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
+//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
+//
+//		//scale data fetch from shaders
+//		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
+//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
+//
+//		//must pass parameter vao to see visibility of drawing 
+//		glBindVertexArray(VAO);
+//
+//		for (unsigned int i = 1; i <= 10; i++)
+//		{
+//			glm::mat4 model = glm::mat4(1.0f);
+//			model = glm::translate(model, objPosition[i]);
+//			model = glm::translate(model, glm::vec3(0.0 + transx, 0.0 + transy, 0));
+//			float angle = 18.0 * i;
+//			if (angle == 0)
+//			{
+//				angle = 40.0;
+//			}
+//			model = glm::rotate(model, glm::radians(angle) * rotationx, glm::vec3(0.0f , 0.0f, -1.0f));
+//			
+//			unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//			glDrawArrays(GL_TRIANGLES, 0, 36);
+//		}
+//
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods) //step 4: assigned keys in keycallback
+//{
+//	const GLfloat rotationSpeed = 1;
+//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//	{
+//		//scale factor conditions, boundaries for zoom in zoom out of the object
+//
+//		switch (key)
+//		{
+//		case GLFW_KEY_L:
+//			rotationx += rotationSpeed;
+//			break;
+//		case GLFW_KEY_R:
+//			rotationx -= rotationSpeed;
+//			break;
+//		}
+//
+//	}
+//
+//	const GLfloat trans = 0.1;
+//		if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//		{
+//			switch (key)
+//			{
+//	
+//			case GLFW_KEY_W:
+//				transy += trans;
+//				break;
+//	
+//			case GLFW_KEY_S:
+//				transy -= trans;
+//				break;
+//	
+//			case GLFW_KEY_A:
+//				transx -= trans;
+//				break;
+//	
+//			case GLFW_KEY_D:
+//				transx += trans;
+//				break;
+//	
+//			default:
+//				break;
+//			}
+//		}
+//
+//		if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//		{		
+//		//scale factor conditions, boundaries for zoom in zoom out of the object
+//			switch (key)
+//			{
+//				case GLFW_KEY_Z:
+//				{
+//			
+//					if (scalefactor <= 2.0)
+//					{
+//						scalefactor += 0.01;
+//					}
+//					else
+//						scaleUp = false;
+//						break;
+//				}
+//				case GLFW_KEY_X:
+//				{
+//			
+//				if (scalefactor >= 0.5)
+//					{
+//						scalefactor -= 0.01;
+//			
+//					}
+//					else
+//						scaleUp = true;
+//					break;
+//				}
+//			
+//			}
+//		}
+//}
+//
+//void ScrollCallback(GLFWwindow* window, double xOffset, double yOffset)
+//{
+//	if (fov >= 1.0f && fov <= 45.0f)
+//		fov -= yOffset;
+//	if (fov <= 1.0f)
+//		fov = 1.0f;
+//	if (fov >= 45.0f)
+//		fov = 45.0f;
+//
+//}
+//
+//void MouseCallback(GLFWwindow* window, double xPos, double yPos)
+//{
+//	if (firstMouse)
+//	{
+//		lastX = xPos;
+//		lastY = yPos;
+//		firstMouse = false;
+//	}
+//
+//	GLfloat xOffset = xPos - lastX;
+//	GLfloat yOffset = lastY - yPos;  // Reversed since y-coordinates go from bottom to left
+//
+//	lastX = xPos;
+//	lastY = yPos;
+//
+//	float sensitivity = 0.05;
+//	xOffset *= sensitivity;
+//	yOffset *= sensitivity;
+//
+//	yaw += xOffset;
+//	pitch += yOffset;
+//
+//	if (pitch > 89.0f)
+//		pitch = 89.0f;
+//	if (pitch < -89.0f)
+//		pitch = -89.0f;
+//
+//	glm::vec3 front;
+//	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+//	front.y = sin(glm::radians(pitch));
+//	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+//	cameraFront = glm::normalize(front);
+//
+//}

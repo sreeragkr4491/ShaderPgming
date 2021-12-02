@@ -315,6 +315,12 @@
     <None Include="Light37.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="skybox.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="skybox.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="IMG_5389.JPG">

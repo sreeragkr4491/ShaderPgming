@@ -22333,145 +22333,7 @@
 
 
 
-//Skybox
-
-
-//
-//#include<GL/glew.h>
-//#include<GLFW/glfw3.h>
-//#include<iostream>
-//#include<GL\glew.h> 
-//#include"Shader.h"
-//#include"SOIL2/SOIL2.h"
-//#include <glm/glm.hpp>
-//#include <glm/gtc/matrix_transform.hpp>
-//#include <glm/gtc/type_ptr.hpp>
-//
-//using namespace std;
-//
-//void main()
-//{
-//	GLint wid = 2000;
-//	GLint height1 = 1500;
-//	GLFWwindow* window; 
-//	glfwInit();
-//
-//	if (!glfwInit())
-//	{
-//		cout << "glfw lib error" << endl;
-//	}
-//	else
-//		cout << "glfw success" << endl;
-//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); 
-//
-//	
-//	glfwMakeContextCurrent(window);
-//
-//	if (glewInit() != GLEW_OK)
-//	{
-//		cout << "fail to open glew\n";
-//
-//	}
-//	else
-//		cout << "glew works success\n";
-//
-//	glViewport(0, 0, wid, height1);
-//	glEnable(GL_DEPTH_TEST);
-//	Shader shaders("skybox.vs", "skybox.frag");
-//
-//	
-//
-//	GLfloat vertices[] =
-//	{
-//		-0.1f, -0.1f, -0.1f, 
-//		 0.1f, -0.1f, -0.1f,
-//		 0.1f,  0.1f, -0.1f, 
-//		 0.1f,  0.1f, -0.1f, 
-//		-0.1f,  0.1f, -0.1f, 
-//		-0.1f, -0.1f, -0.1f, 
-//
-//		-0.1f, -0.1f, 0.1f, 
-//		 0.1f, -0.1f, 0.1f, 
-//		 0.1f,  0.1f, 0.1f, 
-//		 0.1f,  0.1f, 0.1f, 
-//		-0.1f,  0.1f, 0.1f, 
-//		-0.1f, -0.1f, 0.1f, 
-//
-//		-0.1f,  0.1f,  0.1f, 
-//		-0.1f,  0.1f, -0.1f, 
-//		-0.1f, -0.1f, -0.1f, 
-//		-0.1f, -0.1f, -0.1f, 
-//		-0.1f, -0.1f,  0.1f, 
-//		-0.1f,  0.1f,  0.1f, 
-//
-//		0.1f,  0.1f,  0.1f,
-//		0.1f,  0.1f, -0.1f, 
-//		0.1f, -0.1f, -0.1f, 
-//		0.1f, -0.1f, -0.1f, 
-//		0.1f, -0.1f,  0.1f, 
-//		0.1f,  0.1f,  0.1f, 
-//
-//		-0.1f, -0.1f, -0.1f, 
-//		 0.1f, -0.1f, -0.1f,
-//		 0.1f, -0.1f,  0.1f,
-//		 0.1f, -0.1f,  0.1f, 
-//		-0.1f, -0.1f,  0.1f, 
-//		-0.1f, -0.1f, -0.1f, 
-//
-//		-0.1f, 0.1f, -0.1f, 
-//		 0.1f, 0.1f, -0.1f, 
-//		 0.1f, 0.1f,  0.1f, 
-//		 0.1f, 0.1f,  0.1f, 
-//		-0.1f, 0.1f,  0.1f, 
-//		-0.1f, 0.1f, -0.1f
-//	};
-//
-//	GLuint VBO, VAO;
-//	glGenVertexArrays(1, &VAO);
-//	glGenBuffers(1, &VBO);
-//	glBindVertexArray(VAO);
-//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-//
-//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-//	glEnableVertexAttribArray(0);
-//	glBindBuffer(GL_ARRAY_BUFFER, 0);
-//	glBindVertexArray(0);
-//
-//
-//	while (!glfwWindowShouldClose(window))
-//	{
-//		
-//		glClearColor(0, 0, 0, 0); 
-//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-//
-//		glm::mat4 model = glm::mat4(1.0f);
-//		model = glm::translate(model, glm::vec3(0.0, -0.3, -3.0));
-//		unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
-//		glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
-//
-//		
-//		glm::mat4 view = glm::mat4(1.0f);
-//		view = glm::rotate(view, (float)glfwGetTime() * glm::radians(-55.0f), glm::vec3(-1.0f, 1.0f, -1.0f));
-//		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
-//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
-//
-//		glm::mat4 projection;
-//		projection = glm::perspective(glm::radians(45.0f), (float)wid / (float)height1, 0.1f, 100.0f);
-//		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
-//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
-//
-//		glBindVertexArray(VAO);
-//		glDrawArrays(GL_TRIANGLES, 0, 36);
-//	
-//		glfwSwapBuffers(window);
-//		glfwPollEvents();
-//	}
-//	glDeleteVertexArrays(1, &VAO);
-//	glDeleteBuffers(1, &VBO);
-//	glfwTerminate();
-//}
-
+//Skybox Perfect output
 
 
 
@@ -22484,6 +22346,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include"Texture.h"
+#include"Camera.h"
 
 using namespace std;
 
@@ -22493,20 +22357,16 @@ GLint wid = 2000; //*window variable
 GLint height1 = 1500; //*window variable
 GLFWwindow* window; //pointer var as window that will hold address only 
 
-//camera
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+int screen_width, screen_height;
 
+//camera
+Camera camera(glm::vec3(0, 0, 3.0f));
  //timing
 float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
-// s-1 mouse var def
-GLfloat yaw = -90.0f;
-GLfloat pitch = 0.0f;
-GLfloat fov = 45.0f;
-GLfloat lastX = wid / 2.0;
-GLfloat lastY = height1 / 2.0;
+
+GLfloat lastX = 400;
+GLfloat lastY = 300;
 //bool keys[1024];
 bool firstMouse = true;
 
@@ -22525,6 +22385,7 @@ void main()
 
 
 	glfwMakeContextCurrent(window);
+	glfwGetFramebufferSize(window, &screen_width, &screen_height);
 	glfwSetCursorPosCallback(window, MouseCallback);
 	glfwSetInputMode(window, GLFW_CURSOR,GLFW_CURSOR_DISABLED);
 
@@ -22536,7 +22397,7 @@ void main()
 	else
 		cout << "glew works success\n";
 
-	glViewport(0, 0, wid, height1);
+	glViewport(0, 0, screen_width, screen_height);
 	glEnable(GL_DEPTH_TEST);
 	Shader shaders("skybox.vs", "skybox.frag");
 
@@ -22544,47 +22405,49 @@ void main()
 
 	GLfloat vertices[] =
 	{
-		-0.1f, -0.1f, -0.1f,
-		 0.1f, -0.1f, -0.1f,
-		 0.1f,  0.1f, -0.1f,
-		 0.1f,  0.1f, -0.1f,
-		-0.1f,  0.1f, -0.1f,
-		-0.1f, -0.1f, -0.1f,
+		// Positions
+		-1.0f,  1.0f, -1.0f,
+		-1.0f, -1.0f, -1.0f,
+		1.0f, -1.0f, -1.0f,
+		1.0f, -1.0f, -1.0f,
+		1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
 
-		-0.1f, -0.1f, 0.1f,
-		 0.1f, -0.1f, 0.1f,
-		 0.1f,  0.1f, 0.1f,
-		 0.1f,  0.1f, 0.1f,
-		-0.1f,  0.1f, 0.1f,
-		-0.1f, -0.1f, 0.1f,
+		-1.0f, -1.0f,  1.0f,
+		-1.0f, -1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f, -1.0f,
+		-1.0f,  1.0f,  1.0f,
+		-1.0f, -1.0f,  1.0f,
 
-		-0.1f,  0.1f,  0.1f,
-		-0.1f,  0.1f, -0.1f,
-		-0.1f, -0.1f, -0.1f,
-		-0.1f, -0.1f, -0.1f,
-		-0.1f, -0.1f,  0.1f,
-		-0.1f,  0.1f,  0.1f,
+		1.0f, -1.0f, -1.0f,
+		1.0f, -1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f, -1.0f,
+		1.0f, -1.0f, -1.0f,
 
-		0.1f,  0.1f,  0.1f,
-		0.1f,  0.1f, -0.1f,
-		0.1f, -0.1f, -0.1f,
-		0.1f, -0.1f, -0.1f,
-		0.1f, -0.1f,  0.1f,
-		0.1f,  0.1f,  0.1f,
+		-1.0f, -1.0f,  1.0f,
+		-1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f, -1.0f,  1.0f,
+		-1.0f, -1.0f,  1.0f,
 
-		-0.1f, -0.1f, -0.1f,
-		 0.1f, -0.1f, -0.1f,
-		 0.1f, -0.1f,  0.1f,
-		 0.1f, -0.1f,  0.1f,
-		-0.1f, -0.1f,  0.1f,
-		-0.1f, -0.1f, -0.1f,
+		-1.0f,  1.0f, -1.0f,
+		1.0f,  1.0f, -1.0f,
+		1.0f,  1.0f,  1.0f,
+		1.0f,  1.0f,  1.0f,
+		-1.0f,  1.0f,  1.0f,
+		-1.0f,  1.0f, -1.0f,
 
-		-0.1f, 0.1f, -0.1f,
-		 0.1f, 0.1f, -0.1f,
-		 0.1f, 0.1f,  0.1f,
-		 0.1f, 0.1f,  0.1f,
-		-0.1f, 0.1f,  0.1f,
-		-0.1f, 0.1f, -0.1f
+		-1.0f, -1.0f, -1.0f,
+		-1.0f, -1.0f,  1.0f,
+		1.0f, -1.0f, -1.0f,
+		1.0f, -1.0f, -1.0f,
+		-1.0f, -1.0f,  1.0f,
+		1.0f, -1.0f,  1.0f
+
 	};
 
 	GLuint VBO, VAO;
@@ -22599,39 +22462,42 @@ void main()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
+	//skybox cube mapping
+	// Cubemap (Skybox)
+	vector<const GLchar*> faces;
+	faces.push_back("res/images/right.png");
+	faces.push_back("res/images/left.png");
+	faces.push_back("res/images/top.png");
+	faces.push_back("res/images/bottom.png");
+	faces.push_back("res/images/back.png");
+	faces.push_back("res/images/front.png");
+	GLuint cubemapTexture = TextureLoading::LoadCubemap(faces);
+
+	
+
+	glm::mat4 projection = glm::perspective(camera.GetZoom(),
+		(float)screen_width / (float)screen_height, 0.1f, 1000.0f);
+
 
 	while (!glfwWindowShouldClose(window))
 	{
-
+		glfwPollEvents();
 		glClearColor(0, 0, 0, 0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glm::mat4 model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0, -0.3, -3.0));
-		unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
-		glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
-
-		//view
-		glm::mat4 view1 = glm::mat4(1.0f);
-		//with sin/tan angle
-		view1 = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-		shaders.setMat4("view1", view1);
-
-		glm::mat4 view = glm::mat4(1.0f);
-		view = glm::rotate(view, (float)glfwGetTime() * glm::radians(-55.0f), glm::vec3(-1.0f, 1.0f, -1.0f));
-		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
-		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
-
-		glm::mat4 projection;
-		projection = glm::perspective(glm::radians(45.0f), (float)wid / (float)height1, 0.1f, 100.0f);
-		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
-		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
-
+		//skybox
+		glm::mat4 view = camera.GetViewMatrix();
+		glDepthFunc(GL_EQUAL);
+		shaders.Use();
+		view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
+		glUniformMatrix4fv(glGetUniformLocation(shaders.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(glGetUniformLocation(shaders.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 		glBindVertexArray(VAO);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-
+		glBindVertexArray(0);
 		glfwSwapBuffers(window);
-		glfwPollEvents();
+		
 	}
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
@@ -22653,441 +22519,7 @@ void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 	lastX = xPos;
 	lastY = yPos;
 
-	float sensitivity = 0.05;
-	xOffset *= sensitivity;
-	yOffset *= sensitivity;
-
-	yaw += xOffset;
-	pitch += yOffset;
-
-	if (pitch > 89.0f)
-		pitch = 89.0f;
-	if (pitch < -89.0f)
-		pitch = -89.0f;
-
-	glm::vec3 front;
-	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-	front.y = sin(glm::radians(pitch));
-	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-	cameraFront = glm::normalize(front);
-
+	camera.ProcessMouseMovement(xOffset, yOffset);
 }
 
 
-
-
-//
-//#include<GL/glew.h>
-//#include<GLFW/glfw3.h>
-//#include<iostream>
-//#include<GL\glew.h> 
-//#include"Shader1.h"
-//#include"SOIL2/SOIL2.h"
-//#include <glm/glm.hpp>//Graphics Lib for mathematics.
-//#include <glm/gtc/matrix_transform.hpp>
-//#include <glm/gtc/type_ptr.hpp>
-//
-//using namespace std;
-//
-//
-//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods); //step 1: added keycall
-//// s-2 mouse decl part
-//void ScrollCallback(GLFWwindow* window, double xOffset, double yOffset);
-//void MouseCallback(GLFWwindow* window, double xPos, double yPos);
-//
-//GLint wid = 2000; //*window variable
-//GLint height1 = 1500; //*window variable
-//GLFWwindow* window; //pointer var as window that will hold address only 
-//
-//
-// //camera
-//glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-//glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-//glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-//
-// //timing
-//float deltaTime = 0.0f;	// time between current frame and last frame
-//float lastFrame = 0.0f;
-//// s-1 mouse var def
-//GLfloat yaw = -90.0f;
-//GLfloat pitch = 0.0f;
-//GLfloat fov = 45.0f;
-//GLfloat lastX = wid / 2.0;
-//GLfloat lastY = height1 / 2.0;
-////bool keys[1024];
-//bool firstMouse = true;
-//
-//
-//GLfloat rotationx = 0.0f; //step 2: for rotating in x axis
-//
-//GLfloat transx = 0; //  step 2: for translation in x axis
-//GLfloat transy = 0; //  step2: for translation in y axis
-//
-//GLfloat scalefactor = 1.0f; //step 2: for scaling
-//GLboolean scaleUp = false;
-//
-//void main()
-//{
-//	
-//	glfwInit();
-//
-//	if (!glfwInit())
-//	{
-//		cout << "glfw lib error" << endl;
-//	}
-//	else
-//		cout << "glfw success" << endl;
-//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
-//
-//	// make the window context current
-//	glfwMakeContextCurrent(window);
-//	glfwSetKeyCallback(window, keyCall); //step 3: gave keycallback
-//	glfwSetCursorPosCallback(window, MouseCallback);
-//	glfwSetScrollCallback(window, ScrollCallback);
-//	glfwSetInputMode(window, GLFW_CURSOR,GLFW_CURSOR_DISABLED);
-//
-//	//**************** here must add glew function use*********
-//	if (glewInit() != GLEW_OK)
-//	{
-//		cout << "fail to open glew\n";
-//
-//	}
-//	else
-//		cout << "glew works success\n";
-//
-//
-//	//view port
-//	glViewport(0, 0, wid, height1);
-//
-//	glEnable(GL_DEPTH_TEST);
-//
-//	//Attaching shader Files 
-//	Shader shaders("transform10.vs", "transform10.frag");
-//
-//
-//
-//	GLfloat vertices[] =
-//	{
-//		//change vertices as cube and add color too
-//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
-//		 0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 0.0f,
-//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
-//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
-//		-0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 1.0f,
-//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
-//
-//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
-//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 0.0f,
-//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
-//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
-//		-0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 1.0f,
-//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
-//
-//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
-//		-0.5f, 0.5f, -0.5f, 0.0, 0.0, 1.0, 1.0f, 1.0f,
-//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
-//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
-//		-0.5f, -0.5f, 0.5f, 0.0, 0.0, 1.0, 0.0f, 0.0f,
-//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
-//
-//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
-//		0.5f, 0.5f, -0.5f, 0.0, 1.0, 1.0, 1.0f, 1.0f,
-//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
-//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
-//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 1.0, 0.0f, 0.0f,
-//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
-//
-//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
-//		0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 1.0f, 1.0f,
-//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
-//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
-//		-0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 0.0f, 0.0f,
-//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
-//
-//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f,
-//		0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 1.0f, 1.0f,
-//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
-//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
-//		-0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 0.0f, 0.0f,
-//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f
-//		//end
-//
-//
-//	};
-//
-//	glm::vec3 objPosition[] =
-//	{
-//		glm::vec3(0.0f, 0.0f, 0.0f),
-//		glm::vec3(2.0f, 5.0f, -15.0f),
-//		glm::vec3(-1.5f, -2.2f, -2.5f),
-//		glm::vec3(-3.8f, -2.0f, -12.3f),
-//		glm::vec3(2.4f, -0.4f, -3.5f),
-//		glm::vec3(-1.7f, 3.0f, -7.5f),
-//		glm::vec3(1.3f, -2.0f, -2.5f),
-//		glm::vec3(1.5f, 2.0f, -2.5f),
-//		glm::vec3(1.5f, 0.2f, -1.5f),
-//		glm::vec3(-1.3f, 1.0f, -1.5f)
-//	};
-//
-//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
-//	glGenVertexArrays(1, &VAO);
-//	glGenBuffers(1, &VBO);
-//
-//	glBindVertexArray(VAO);
-//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-//
-//	//vertices
-//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
-//	glEnableVertexAttribArray(0);
-//
-//	//color
-//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-//	glEnableVertexAttribArray(1);
-//
-//	//texture
-//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
-//	glEnableVertexAttribArray(2);
-//
-//
-//
-//
-//	glBindBuffer(GL_ARRAY_BUFFER, 0);
-//	glBindVertexArray(0);
-//
-//
-//	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
-//	unsigned int texture;
-//	glGenTextures(1, &texture);
-//	glBindTexture(GL_TEXTURE_2D, texture);
-//	//texturing
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//
-//	int width, height, nrChannels;
-//	unsigned char* image = SOIL_load_image("image1.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
-//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-//	glGenerateMipmap(GL_TEXTURE_2D);
-//	SOIL_free_image_data(image);
-//	glBindTexture(GL_TEXTURE_2D, 0);
-//
-//
-//	//texture-2 file manipulation / how to do the texture attachment wth of openGl soil lib.
-//	unsigned int texture1;
-//	glGenTextures(1, &texture1);
-//	glBindTexture(GL_TEXTURE_2D, texture1);
-//	//texturing
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//
-//	//int width, height, nrChannels;
-//	unsigned char* image1 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
-//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image1);
-//	glGenerateMipmap(GL_TEXTURE_2D);
-//	SOIL_free_image_data(image1);
-//	glBindTexture(GL_TEXTURE_2D, 0);
-//
-//
-//
-//	//gameloop
-//	while (!glfwWindowShouldClose(window))
-//	{
-//		//for the bg color
-//		glClearColor(0, 0, 0, 0); //for rgb color change
-//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
-//
-//		//linking the shader / calling the shader
-//		shaders.Use();
-//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture11"), 0);
-//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture22"), 1);
-//		glActiveTexture(GL_TEXTURE0);
-//		glBindTexture(GL_TEXTURE_2D, texture);
-//		glActiveTexture(GL_TEXTURE1);
-//		glBindTexture(GL_TEXTURE_2D, texture1);
-//
-//		//trabsaltion
-//		//glm::mat4 model = glm::mat4(1.0f);
-//		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
-//
-//		//view
-//		glm::mat4 view = glm::mat4(1.0f);
-//		//with sin/tan angle
-//		view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-//		shaders.setMat4("view", view);
-//
-//		//scale
-//		glm::mat4 view1 = glm::mat4(1.0f);
-//		view1 = glm::scale(view1, glm::vec3(scalefactor, scalefactor, scalefactor));
-//
-//
-//		glm::mat4 projection;
-//		projection = glm::perspective(glm::radians(100.0f), (float)wid / (float)height1, 0.1f, 100.0f);
-//
-//		unsigned int viewacces1 = glGetUniformLocation(shaders.Program, "view1");
-//		glUniformMatrix4fv(viewacces1, 1, GL_FALSE, glm::value_ptr(view1));
-//
-//		//view data fetch from shaders
-//		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
-//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
-//
-//		//scale data fetch from shaders
-//		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
-//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
-//
-//		//must pass parameter vao to see visibility of drawing 
-//		glBindVertexArray(VAO);
-//
-//		for (unsigned int i = 1; i <= 10; i++)
-//		{
-//			glm::mat4 model = glm::mat4(1.0f);
-//			model = glm::translate(model, objPosition[i]);
-//			model = glm::translate(model, glm::vec3(0.0 + transx, 0.0 + transy, 0));
-//			float angle = 18.0 * i;
-//			if (angle == 0)
-//			{
-//				angle = 40.0;
-//			}
-//			model = glm::rotate(model, glm::radians(angle) * rotationx, glm::vec3(0.0f , 0.0f, -1.0f));
-//			
-//			unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
-//			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
-//			glDrawArrays(GL_TRIANGLES, 0, 36);
-//		}
-//
-//
-//		glfwSwapBuffers(window);//to swap the new color for window
-//		glfwPollEvents();
-//	}
-//	glDeleteVertexArrays(1, &VAO);
-//	glDeleteBuffers(1, &VBO);
-//	glfwTerminate();
-//}
-//
-//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods) //step 4: assigned keys in keycallback
-//{
-//	const GLfloat rotationSpeed = 1;
-//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
-//	{
-//		//scale factor conditions, boundaries for zoom in zoom out of the object
-//
-//		switch (key)
-//		{
-//		case GLFW_KEY_L:
-//			rotationx += rotationSpeed;
-//			break;
-//		case GLFW_KEY_R:
-//			rotationx -= rotationSpeed;
-//			break;
-//		}
-//
-//	}
-//
-//	const GLfloat trans = 0.1;
-//		if (action == GLFW_PRESS || action == GLFW_REPEAT)
-//		{
-//			switch (key)
-//			{
-//	
-//			case GLFW_KEY_W:
-//				transy += trans;
-//				break;
-//	
-//			case GLFW_KEY_S:
-//				transy -= trans;
-//				break;
-//	
-//			case GLFW_KEY_A:
-//				transx -= trans;
-//				break;
-//	
-//			case GLFW_KEY_D:
-//				transx += trans;
-//				break;
-//	
-//			default:
-//				break;
-//			}
-//		}
-//
-//		if (action == GLFW_PRESS || action == GLFW_REPEAT)
-//		{		
-//		//scale factor conditions, boundaries for zoom in zoom out of the object
-//			switch (key)
-//			{
-//				case GLFW_KEY_Z:
-//				{
-//			
-//					if (scalefactor <= 2.0)
-//					{
-//						scalefactor += 0.01;
-//					}
-//					else
-//						scaleUp = false;
-//						break;
-//				}
-//				case GLFW_KEY_X:
-//				{
-//			
-//				if (scalefactor >= 0.5)
-//					{
-//						scalefactor -= 0.01;
-//			
-//					}
-//					else
-//						scaleUp = true;
-//					break;
-//				}
-//			
-//			}
-//		}
-//}
-//
-//void ScrollCallback(GLFWwindow* window, double xOffset, double yOffset)
-//{
-//	if (fov >= 1.0f && fov <= 45.0f)
-//		fov -= yOffset;
-//	if (fov <= 1.0f)
-//		fov = 1.0f;
-//	if (fov >= 45.0f)
-//		fov = 45.0f;
-//
-//}
-//
-//void MouseCallback(GLFWwindow* window, double xPos, double yPos)
-//{
-//	if (firstMouse)
-//	{
-//		lastX = xPos;
-//		lastY = yPos;
-//		firstMouse = false;
-//	}
-//
-//	GLfloat xOffset = xPos - lastX;
-//	GLfloat yOffset = lastY - yPos;  // Reversed since y-coordinates go from bottom to left
-//
-//	lastX = xPos;
-//	lastY = yPos;
-//
-//	float sensitivity = 0.05;
-//	xOffset *= sensitivity;
-//	yOffset *= sensitivity;
-//
-//	yaw += xOffset;
-//	pitch += yOffset;
-//
-//	if (pitch > 89.0f)
-//		pitch = 89.0f;
-//	if (pitch < -89.0f)
-//		pitch = -89.0f;
-//
-//	glm::vec3 front;
-//	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-//	front.y = sin(glm::radians(pitch));
-//	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-//	cameraFront = glm::normalize(front);
-//
-//}

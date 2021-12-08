@@ -1,0 +1,16 @@
+C++ General
+
+Additional include directories=
+C:\_OGL_LIB\SOIL_LIB\src;C:\_OGL_LIB\glm;C:\_OGL_LIB\glfw-3.0.4.bin.WIN32\include;C:\_OGL_LIB\glew-1.11.0\include;%(AdditionalIncludeDirectories)
+
+
+LINKER GENERAL
+Additional library directories=
+C:\_OGL_LIB\SOIL_LIB\lib;C:\_OGL_LIB\glfw-3.0.4.bin.WIN32\lib-msvc120;C:\_OGL_LIB\glew-1.11.0\lib\Release\Win32;%(AdditionalLibraryDirectories)
+
+
+
+LINEKR INPUT
+Additional dependencies=
+opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;legacy_stdio_definitions.lib;SOIL.lib;%(AdditionalDependencies)
+

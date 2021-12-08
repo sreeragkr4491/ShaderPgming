@@ -1,0 +1,16 @@
+
+
+
+1.assimp library
+
+2.class files, mesh and model
+
+3.keep some files in project folder
+
+4.soil glm library
+
+5.3D models
+
+6.assimp dll files must keep in project folder
+
+7.code for model loading
